@@ -46,21 +46,45 @@
 
   <style>
     /* ─── TOKENS ──────────────────────────────────────────────────── */
+    /* Surface ladder: bg → surface → surface2 → surface3 (Raycast/Cursor pattern) */
     :root {
+      /* Surfaces — elevation through color step, never drop shadow */
       --bg:        #060809;
-      --surface:   #0c0f12;
-      --surface2:  #131820;
-      --border:    rgba(255,255,255,0.07);
-      --border-hi: rgba(0,255,209,0.35);
-      --accent:    #00FFD1;
-      --accent-dim:#00c4a0;
-      --red:       #ff3f3f;
-      --amber:     #ffb020;
-      --green:     #22dd88;
-      --text:      #e0e6ed;
-      --muted:     #5a6a7a;
-      --mono:      'Space Mono', 'Cascadia Code', 'Courier New', monospace;
-      --sans:      'Inter', system-ui, sans-serif;
+      --surface:   #0b0e11;
+      --surface2:  #111518;
+      --surface3:  #181c21;
+      --hairline:  rgba(255,255,255,0.05);   /* Stripe: 1px hairlines only */
+      --border:    rgba(255,255,255,0.08);
+      --border-hi: rgba(0,255,209,0.3);
+
+      /* Single accent — white is primary CTA (Raycast rule), cyan is secondary */
+      --accent:    #00E5BA;
+      --accent-lo: rgba(0,229,186,0.08);
+      --accent-glow: 0 0 20px rgba(0,229,186,0.25);  /* NVIDIA: glow on key numbers */
+
+      /* Semantic status (Control Room lamp palette) */
+      --lamp-green: #2ecc71;
+      --lamp-amber: #ffb000;
+      --lamp-red:   #ff3b30;
+      --red:        #ff3b30;
+      --amber:      #ffb000;
+      --green:      #2ecc71;
+
+      /* Typography */
+      --text:      #dde4ec;
+      --text-hi:   #ffffff;
+      --muted:     #52626f;
+      --muted2:    #3a4750;
+
+      /* Font stacks */
+      --mono: 'Space Mono', 'Cascadia Code', 'Courier New', monospace;
+      --sans: 'Inter', system-ui, sans-serif;
+
+      /* Motion tokens (motion-ui skill) */
+      --ease-smooth: cubic-bezier(0.22,1,0.36,1);
+      --ease-sharp:  cubic-bezier(0.4,0,0.2,1);
+      --dur-fast:    0.18s;
+      --dur-normal:  0.35s;
     }
 
     /* ─── RESET ───────────────────────────────────────────────────── */
@@ -136,92 +160,110 @@
       align-items: center;
       justify-content: space-between;
       padding: 0 clamp(16px, 4vw, 40px);
-      height: 56px;
-      background: rgba(6,8,9,0.85);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border);
+      height: 52px;
+      background: rgba(6,8,9,0.9);
+      backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 1px solid var(--hairline);
     }
 
     .nav-logo {
       font-family: var(--mono);
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 700;
-      color: var(--text);
+      color: var(--text-hi);
       text-decoration: none;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
+      letter-spacing: -0.01em;
     }
 
-    .nav-logo-icon {
-      width: 28px; height: 28px;
-      border: 1px solid var(--border-hi);
-      border-radius: 5px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 12px;
-      color: var(--accent);
-      background: rgba(0,255,209,0.05);
+    /* Control Room: live CI lamp in the nav */
+    .ci-lamp {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--lamp-green);
+      padding: 3px 7px;
+      border: 1px solid rgba(46,204,113,0.2);
+      border-radius: 3px;
+      background: rgba(46,204,113,0.06);
     }
 
-    .nav-badge {
-      font-size: 10px;
-      padding: 2px 8px;
-      border-radius: 100px;
-      border: 1px solid rgba(0,255,209,0.2);
-      background: rgba(0,255,209,0.06);
-      color: var(--accent);
-      letter-spacing: 0.04em;
+    .ci-lamp-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--lamp-green);
+      box-shadow: 0 0 6px var(--lamp-green);
+      animation: lamp-pulse 2.4s ease-in-out infinite;
+    }
+
+    @keyframes lamp-pulse {
+      0%, 100% { box-shadow: 0 0 6px var(--lamp-green); opacity: 1; }
+      50%       { box-shadow: 0 0 2px var(--lamp-green); opacity: 0.7; }
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 32px;
+      gap: 28px;
       list-style: none;
     }
 
     @media (max-width: 700px) { .nav-links { display: none; } }
 
+    /* Raycast pattern: no tinted accent on nav links — muted → white on hover */
     .nav-links a {
       font-family: var(--mono);
-      font-size: 11px;
+      font-size: 10px;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--muted);
       text-decoration: none;
-      transition: color 0.2s;
+      transition: color var(--dur-fast) var(--ease-sharp);
     }
-    .nav-links a:hover { color: var(--accent); }
+    .nav-links a:hover { color: var(--text-hi); }
 
     .nav-cta {
-      display: flex; align-items: center; gap: 10px;
+      display: flex; align-items: center; gap: 8px;
     }
 
+    /* Raycast rule: white IS the brand action color. One solid white pill per fold max. */
     .btn-ghost {
       font-family: var(--mono);
-      font-size: 11px;
+      font-size: 10px;
+      letter-spacing: 0.05em;
       padding: 7px 14px;
-      border-radius: 5px;
+      border-radius: 4px;
       border: 1px solid var(--border);
-      background: transparent;
+      background: var(--surface2);       /* surface ladder elevation, not transparent */
       color: var(--muted);
       text-decoration: none;
-      transition: border-color 0.2s, color 0.2s;
+      transition: border-color var(--dur-fast) var(--ease-sharp),
+                  color var(--dur-fast) var(--ease-sharp),
+                  background var(--dur-fast) var(--ease-sharp);
     }
-    .btn-ghost:hover { border-color: var(--border-hi); color: var(--text); }
+    .btn-ghost:hover { border-color: var(--border-hi); color: var(--text-hi); background: var(--surface3); }
 
+    /* Primary CTA = white (Raycast), not tinted accent */
     .btn-primary {
       font-family: var(--mono);
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 700;
+      letter-spacing: 0.05em;
       padding: 8px 18px;
-      border-radius: 5px;
-      background: var(--accent);
-      color: var(--bg);
+      border-radius: 4px;
+      background: #ffffff;
+      color: #060809;
       text-decoration: none;
-      transition: background 0.2s, transform 0.15s;
+      transition: opacity var(--dur-fast) var(--ease-sharp),
+                  transform var(--dur-fast) var(--ease-sharp);
     }
-    .btn-primary:hover { background: #33ffdc; transform: scale(1.03); }
+    .btn-primary:hover { opacity: 0.9; transform: scale(1.02); }
     .btn-primary:active { transform: scale(0.97); }
 
     /* ─── HERO ────────────────────────────────────────────────────── */
@@ -273,12 +315,12 @@
 
     .hero-h1 {
       font-family: var(--mono);
-      font-size: clamp(32px, 5vw, 56px);
+      font-size: clamp(28px, 4.5vw, 52px);
       font-weight: 700;
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      color: #fff;
-      margin-bottom: 24px;
+      line-height: 1.08;
+      letter-spacing: -0.04em;    /* Linear.app pattern: extremely tight tracking */
+      color: var(--text-hi);
+      margin-bottom: 22px;
     }
 
     .hero-h1 .line-accent {
@@ -287,11 +329,11 @@
     }
 
     .hero-sub {
-      font-size: 15px;
+      font-size: 14px;
       color: var(--muted);
-      line-height: 1.7;
-      max-width: 440px;
-      margin-bottom: 36px;
+      line-height: 1.75;
+      max-width: 420px;
+      margin-bottom: 32px;
     }
 
     .hero-sub strong { color: var(--text); font-weight: 500; }
@@ -299,37 +341,39 @@
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 10px;
       align-items: center;
-      margin-bottom: 40px;
+      margin-bottom: 36px;
     }
 
     .hero-stat-row {
       display: flex;
-      gap: 24px;
-      padding-top: 32px;
-      border-top: 1px solid var(--border);
+      gap: 28px;
+      padding-top: 28px;
+      border-top: 1px solid var(--hairline);  /* Stripe hairline */
     }
 
     .hero-stat {
       font-family: var(--mono);
     }
 
+    /* NVIDIA: glow on the key performance number */
     .hero-stat-val {
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 700;
-      color: #fff;
-      letter-spacing: -0.03em;
+      color: var(--text-hi);
+      letter-spacing: -0.04em;
+      text-shadow: var(--accent-glow);
     }
 
-    .hero-stat-val span { font-size: 13px; color: var(--accent); }
+    .hero-stat-val span { font-size: 12px; color: var(--accent); text-shadow: none; }
 
     .hero-stat-label {
       font-size: 10px;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--muted);
-      margin-top: 2px;
+      margin-top: 3px;
     }
 
     /* ─── TERMINAL MOCKUP ─────────────────────────────────────────── */
@@ -337,15 +381,13 @@
       position: relative;
     }
 
+    /* Cursor pattern: elevation via surface border, not drop shadow */
     .terminal {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 10px;
+      border-radius: 8px;
       overflow: hidden;
-      box-shadow:
-        0 0 0 1px rgba(0,255,209,0.06),
-        0 24px 64px rgba(0,0,0,0.7),
-        0 0 80px rgba(0,255,209,0.04);
+      box-shadow: 0 0 0 1px rgba(0,229,186,0.05);  /* single hairline accent ring only */
       position: relative;
     }
 
@@ -527,11 +569,10 @@
     .stats-bar {
       position: relative;
       z-index: 1;
-      margin-top: 80px;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      background: rgba(12,15,18,0.6);
-      backdrop-filter: blur(8px);
+      margin-top: 72px;
+      border-top: 1px solid var(--hairline);
+      border-bottom: 1px solid var(--hairline);
+      background: var(--surface);   /* surface ladder step, not bg */
     }
 
     .stats-bar-inner {
@@ -540,7 +581,6 @@
       padding: 0 clamp(16px, 5vw, 64px);
       display: grid;
       grid-template-columns: repeat(5, 1fr);
-      divide-color: var(--border);
     }
 
     @media (max-width: 700px) {
@@ -548,9 +588,8 @@
     }
 
     .stat-item {
-      padding: 28px 0;
-      border-right: 1px solid var(--border);
-      padding-left: 32px;
+      padding: 24px 0 24px 28px;
+      border-right: 1px solid var(--hairline);   /* Stripe hairline divider */
       font-family: var(--mono);
     }
 
@@ -558,23 +597,25 @@
     .stat-item:last-child { border-right: none; }
 
     @media (max-width: 700px) {
-      .stat-item { border-right: none; border-bottom: 1px solid var(--border); padding-left: 0; }
+      .stat-item { border-right: none; border-bottom: 1px solid var(--hairline); padding-left: 0; }
       .stat-item:last-child { border-bottom: none; }
     }
 
+    /* NVIDIA: giant tabular number with accent glow — the engineering credential */
     .stat-num {
-      font-size: 28px;
+      font-size: 26px;
       font-weight: 700;
-      color: #fff;
-      letter-spacing: -0.04em;
+      color: var(--text-hi);
+      letter-spacing: -0.05em;
+      text-shadow: var(--accent-glow);
     }
 
-    .stat-num sup { font-size: 13px; color: var(--accent); }
+    .stat-num sup { font-size: 12px; color: var(--accent); text-shadow: none; letter-spacing: 0; }
 
     .stat-tag {
-      font-size: 10px;
+      font-size: 9px;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.12em;
       color: var(--accent);
       margin-top: 4px;
     }
@@ -591,54 +632,58 @@
       z-index: 1;
       max-width: 1200px;
       margin: 0 auto;
-      padding: clamp(64px, 10vw, 120px) clamp(16px, 5vw, 64px);
+      padding: clamp(64px, 10vw, 112px) clamp(16px, 5vw, 64px);
     }
 
     .section-label {
       font-family: var(--mono);
-      font-size: 11px;
+      font-size: 10px;
       letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--accent);
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
+    /* Linear/Cursor: tight -0.04em on all section headings */
     .section-h2 {
       font-family: var(--mono);
-      font-size: clamp(24px, 3.5vw, 40px);
+      font-size: clamp(22px, 3vw, 38px);
       font-weight: 700;
-      color: #fff;
-      line-height: 1.15;
-      letter-spacing: -0.02em;
+      color: var(--text-hi);
+      line-height: 1.1;
+      letter-spacing: -0.04em;
     }
 
     .section-sub {
-      font-size: 14px;
+      font-size: 13px;
       color: var(--muted);
-      margin-top: 12px;
-      max-width: 520px;
+      margin-top: 10px;
+      max-width: 480px;
+      line-height: 1.7;
     }
 
     /* ─── BENTO GRID ──────────────────────────────────────────────── */
     .bento {
       display: grid;
       grid-template-columns: repeat(12, 1fr);
-      gap: 12px;
-      margin-top: 48px;
+      gap: 8px;        /* Stripe: tighter gap = denser, more editorial */
+      margin-top: 40px;
     }
 
     @media (max-width: 900px) {
       .bento { grid-template-columns: 1fr; }
     }
 
+    /* IBM/Cursor: surface ladder elevation, NO drop shadow on cards */
     .bento-card {
       background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: clamp(20px, 2.5vw, 32px);
+      border: 1px solid var(--hairline);   /* Stripe: hairline only */
+      border-radius: 6px;                  /* IBM: restrained radius */
+      padding: clamp(18px, 2vw, 28px);
       position: relative;
       overflow: hidden;
-      transition: border-color 0.25s;
+      transition: border-color var(--dur-fast) var(--ease-sharp),
+                  background var(--dur-fast) var(--ease-sharp);
       cursor: default;
     }
 
@@ -648,17 +693,21 @@
       inset: 0;
       border-radius: inherit;
       background: radial-gradient(
-        280px circle at var(--mx, -100%) var(--my, -100%),
-        rgba(0,255,209,0.07), transparent 70%
+        260px circle at var(--mx, -100%) var(--my, -100%),
+        rgba(0,229,186,0.06), transparent 70%
       );
       pointer-events: none;
       z-index: 0;
       opacity: 0;
-      transition: opacity 0.3s;
+      transition: opacity var(--dur-normal) var(--ease-smooth);
     }
 
     .bento-card:hover::before { opacity: 1; }
-    .bento-card:hover { border-color: rgba(0,255,209,0.2); }
+    /* Step up one surface level on hover — Cursor pattern */
+    .bento-card:hover {
+      border-color: var(--border);
+      background: var(--surface2);
+    }
 
     .bento-card > * { position: relative; z-index: 1; }
 
@@ -1284,9 +1333,11 @@
   <!-- ── NAV ────────────────────────────────────────────────────── -->
   <nav>
     <a href="#" class="nav-logo">
-      <div class="nav-logo-icon">⚡</div>
       akashshell
-      <span class="nav-badge">v0.2</span>
+      <span class="ci-lamp" id="ci-status" title="Build status">
+        <span class="ci-lamp-dot"></span>
+        BUILD OK
+      </span>
     </a>
 
     <ul class="nav-links">
@@ -1298,7 +1349,7 @@
 
     <div class="nav-cta">
       <a href="https://github.com/AkashPriyadarshii/akashshell" target="_blank" rel="noopener" class="btn-ghost">GitHub ↗</a>
-      <a href="#build" class="btn-primary">Get .exe ↓</a>
+      <a href="#build" class="btn-primary">Get .exe</a>
     </div>
   </nav>
 
@@ -2009,6 +2060,45 @@ Core systems:
     function esc(t) {
       return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
     }
+
+    /* ── Control Room: Live CI Lamp via GitHub API ─────────────────── */
+    /* Fetch last workflow run status for AkashPriyadarshii/akashshell  */
+    (function pollCI() {
+      const lamp = document.getElementById('ci-status');
+      if (!lamp) return;
+      const dot  = lamp.querySelector('.ci-lamp-dot');
+
+      fetch('https://api.github.com/repos/AkashPriyadarshii/akashshell/actions/runs?per_page=1', {
+        headers: { 'Accept': 'application/vnd.github+json' }
+      })
+      .then(r => r.ok ? r.json() : null)
+      .then(data => {
+        if (!data || !data.workflow_runs || !data.workflow_runs[0]) return;
+        const run = data.workflow_runs[0];
+        if (run.conclusion === 'success') {
+          /* lamp stays green */
+        } else if (run.conclusion === 'failure') {
+          lamp.style.color = 'var(--lamp-red)';
+          lamp.style.borderColor = 'rgba(255,59,48,0.2)';
+          lamp.style.background  = 'rgba(255,59,48,0.06)';
+          dot.style.background   = 'var(--lamp-red)';
+          dot.style.boxShadow    = '0 0 6px var(--lamp-red)';
+          lamp.textContent = '';
+          lamp.appendChild(dot);
+          lamp.append(' BUILD FAIL');
+        } else if (run.status === 'in_progress') {
+          lamp.style.color = 'var(--lamp-amber)';
+          lamp.style.borderColor = 'rgba(255,176,0,0.2)';
+          lamp.style.background  = 'rgba(255,176,0,0.06)';
+          dot.style.background   = 'var(--lamp-amber)';
+          dot.style.boxShadow    = '0 0 6px var(--lamp-amber)';
+          lamp.textContent = '';
+          lamp.appendChild(dot);
+          lamp.append(' BUILDING');
+        }
+      })
+      .catch(() => { /* no CI config — lamp stays green / offline */ });
+    })();
   </script>
 
 </body>
