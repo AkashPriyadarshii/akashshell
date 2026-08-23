@@ -1,22 +1,15 @@
-﻿# Product Requirements Document (PRD) - akashshell v0.1
+﻿# Product Requirements Document (PRD) - akashshell v0.2 (Production Grade)
 
 ## Vision
-To build the most performant, visually stunning, single-file Windows shell and terminal emulator possible using pure C and zero third-party dependencies.
+The absolute "max best" Windows 11 shell and terminal emulator. Built by a vibecoder to compress a 6-month elite engineering roadmap into immediate production-grade execution. 
+**Strict Constraint:** 100% Pure C and Windows API. No MVP. No web frameworks. No Rust.
 
 ## Target Audience
-- Single-user optimization (Akash Priyadarshi).
-- Windows 11 power users seeking ultra-low latency and modern UX without the bloat of web-based terminals.
+Akash Priyadarshi — demanding zero-latency, elite UX, and extreme bare-metal performance.
 
-## Core Requirements (v0.1 Complete)
-- **R1 - Hardware-Accelerated GUI:** Implemented via Direct2D (`ID2D1HwndRenderTarget`) and DirectWrite. No GDI, no standard Win32 `EDIT` controls.
-- **R2 - Block-Based UI Paradigm:** Output is structured as a linked list of visual "blocks" (Command + Output), moving away from the legacy infinite-scroll text buffer.
-- **R3 - Async Pipeline Engine:** Commands are dispatched to a background worker thread. Stdout is captured via anonymous pipes and pushed to the UI thread via `PostMessage` without blocking the 60fps render loop.
-- **R4 - Pipe Chains:** `a | b | c` works flawlessly via manual `DuplicateHandle` and `CreatePipe` routing.
-- **R5 - Built-in Commands:** `cd` (changes context in engine) and `exit` (flushes state and terminates).
-- **R6 - Command History:** Memory-based history array, navigated via Up/Down arrow keys in the GUI, flushed to `%USERPROFILE%\.akashshell_history` on exit.
-- **R7 - DWM Integration:** Windows 11 Dark Mode (20), Mica Backdrop (38), and Rounded Corners (33) applied via `DwmSetWindowAttribute`.
-
-## Future Scope (v0.2+)
-- Environment variable expansion (`$VAR`).
-- Syntax highlighting within the input bar.
-- Configurable settings panel (fonts, colors, padding).
+## Core Requirements (v0.2)
+- **R1 - Custom Direct2D Node Engine:** Rip out all OS-level UI controls. Build a lightweight flex-style layout engine in C to calculate bounding boxes, animations, and hover states natively at 60fps.
+- **R2 - Bespoke Text Editor:** Implement a gap-buffer text editing structure in C. Render text manually via `IDWriteTextLayout`. Support syntax highlighting, multi-cursor, and sub-pixel caret rendering.
+- **R3 - Object Pipeline (PowerShell Killer):** Integrate a single-header JSON parser. Commands output structured JSON, parsed in C, and rendered as beautiful interactive data grids/tables.
+- **R5 - Embedded Database:** Drop `sqlite3.c` into the codebase. Log all commands, execution times, and outputs for instant semantic search.
+- **R6 - Embedded Scripting:** Drop `lua.c` into the codebase. Users write Lua scripts to automate OS tasks and format CLI outputs.

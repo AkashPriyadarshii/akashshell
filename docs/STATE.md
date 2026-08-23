@@ -1,19 +1,13 @@
 ﻿# Project State - akashshell
 
-**Current Version:** v0.1.1 (GUI Update)
-**Build Status:** Passing / Stable
+**Current Version:** v0.2.0-alpha (VibeCoder Expansion)
+**Status:** In Development
 **Date:** August 2026
 
 ## Status Summary
-The foundational v0.1 milestone is **100% complete**. We have achieved the core goal of writing a fully functional command-line interpreter and wrapped it in an elite-grade, hardware-accelerated GUI using zero external dependencies.
+v0.1 is locked and shipped. We are now executing the compressed 6-month Production-Grade Pure C roadmap. 
 
-## Recent Milestones Achieved
-1. Fixed standard pipe handle leaks and inheritance issues on Windows.
-2. Completed the massive `gui.c` rewrite to shift from standard OS controls to a custom Direct2D rendering pipeline.
-3. Implemented a Block-based UI, setting a new standard for C-based minimalist shells.
-4. Maximum SEO and repository metadata applied.
-
-## Next Immediate Steps (Post-Push)
-- Enter the v0.2 phase.
-- Audit the current block UI rendering code for edge cases (e.g., extremely long output truncation, horizontal scrolling).
-- Implement `$VAR` environment expansion.
+## Active Sprint (Phase 1)
+- Ripping out the `EDIT` control.
+- Building the custom `UI_Node` layout engine and Gap-Buffer text editor in `gui.c`.
+- Injecting `sqlite3.c` and `lua.c` into the build process.

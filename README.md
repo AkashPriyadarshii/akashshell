@@ -9,7 +9,7 @@
 
 `akashshell` is a ground-up reimagining of what a modern shell frontend can be on Windows. Abandoning bloated web frameworks (Electron) and heavy UI libraries, it uses **pure Win32 C, Direct2D, and DirectWrite** to deliver an elite-grade, zero-dependency terminal experience.
 
-## ✨ Elite Features (v0.1)
+## ✨ Elite Features (v0.2 Production Architecture)
 
 *   🚀 **Hardware-Accelerated Rendering:** Bypasses GDI entirely. Uses `ID2D1HwndRenderTarget` for GPU-accelerated drawing at 60fps.
 *   🖋️ **Sub-pixel Typography:** Integrates `IDWriteTextFormat` with *Cascadia Code* for flawless, anti-aliased font rendering identical to VS Code and Windows Terminal.
@@ -30,7 +30,7 @@ See `docs/PRD.md` and `docs/ARCHITECTURE.mmd` for an in-depth breakdown of the p
 
 You need a C compiler that supports the Windows API (GCC via llvm-mingw or MSVC).
 
-**Build the Elite Direct2D GUI (v0.1):**
+**Build the Elite Direct2D GUI (v0.2):**
 ```bat
 gcc -O2 -Wall -Wextra gui.c -lshell32 -ldwmapi -lcomctl32 -lgdi32 -ld2d1 -ldwrite -lole32 -luuid -mwindows -o akashshell_gui.exe
 ```
@@ -44,3 +44,5 @@ gcc -O2 -Wall shell.c -lshell32 -o akashshell.exe
 Built for Akash Priyadarshi as an extreme exercise in achieving maximum performance and modern UX within the absolute tightest constraints (one C file, zero 3rd-party dependencies). 
 
 **Keywords:** `Windows 11`, `Terminal Emulator`, `Direct2D`, `Hardware-Accelerated`, `Win32 API`, `C Shell`, `Block UI`, `Warp Alternative`, `Zero Dependencies`, `Ghostty`.
+
+
