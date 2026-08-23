@@ -72,14 +72,9 @@
           },
           animation: {
             'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-            'scanline': 'scanline 8s linear infinite',
             'cursor': 'blink 1s step-start infinite',
           },
           keyframes: {
-            scanline: {
-              '0%': { transform: 'translateY(-100%)' },
-              '100%': { transform: 'translateY(1000%)' },
-            },
             blink: {
               '0%, 100%': { opacity: '1' },
               '50%': { opacity: '0' },
@@ -161,7 +156,6 @@
   </script>
 
   <style>
-    /* Tactical grid & custom scrollbar */
     body {
       background-color: #070A0E;
       color: #E6EDF3;
@@ -191,15 +185,35 @@
         linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
     }
 
-    .blueprint-dots {
-      background-size: 24px 24px;
-      background-image: radial-gradient(circle, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
-    }
-
+    /* Double Bezel Hardware Component Architecture */
     .double-bezel {
       background: #0E131A;
       border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+      box-shadow: 0 12px 36px -10px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      position: relative;
+    }
+
+    .double-bezel::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      padding: 1px;
+      background: radial-gradient(
+        400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        rgba(0, 240, 255, 0.35),
+        transparent 70%
+      );
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .double-bezel:hover::before {
+      opacity: 1;
     }
 
     .inner-core {
@@ -224,62 +238,91 @@
       );
       background-size: 100% 3px, 6px 100%;
     }
+
+    .grain-overlay {
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
+    }
   </style>
 </head>
 
-<body class="selection:bg-cyan-accent selection:text-obsidian-950 blueprint-grid relative">
+<body class="selection:bg-cyan-accent selection:text-obsidian-950 blueprint-grid relative font-sans">
+
+  <!-- Accessibility Skip Link -->
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-[100] px-4 py-2 bg-cyan-accent text-obsidian-950 font-mono font-bold text-xs rounded-lg">
+    Skip to main content
+  </a>
+
+  <!-- Fixed Hardware Grain Overlay -->
+  <div class="fixed inset-0 pointer-events-none z-50 grain-overlay"></div>
 
   <!-- Background Ambient Glows -->
   <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-    <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[750px] h-[450px] bg-cyan-500/10 rounded-full blur-[140px]"></div>
-    <div class="absolute top-[40%] -left-40 w-[500px] h-[500px] bg-blue-600/5 rounded-full blur-[160px]"></div>
-    <div class="absolute top-[70%] -right-40 w-[600px] h-[500px] bg-cyan-600/5 rounded-full blur-[160px]"></div>
+    <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-cyan-500/10 rounded-full blur-[150px]"></div>
+    <div class="absolute top-[35%] -left-40 w-[550px] h-[550px] bg-blue-600/5 rounded-full blur-[170px]"></div>
+    <div class="absolute top-[65%] -right-40 w-[650px] h-[550px] bg-cyan-600/5 rounded-full blur-[170px]"></div>
   </div>
 
   <!-- FLOATING ISLAND NAVIGATION -->
-  <header class="fixed top-5 inset-x-0 z-50 flex justify-center px-4">
-    <nav class="flex items-center justify-between gap-6 px-5 py-2.5 rounded-full bg-obsidian-900/80 backdrop-blur-xl border border-white/10 shadow-2xl max-w-4xl w-full transition-all duration-300">
-      <a href="#" class="flex items-center gap-3 group">
+  <header class="fixed top-5 inset-x-0 z-40 flex justify-center px-4">
+    <nav class="flex items-center justify-between gap-4 sm:gap-6 px-4 sm:px-6 py-2.5 rounded-full bg-obsidian-900/85 backdrop-blur-xl border border-white/10 shadow-2xl max-w-4xl w-full transition-all duration-300">
+      <a href="#" class="flex items-center gap-3 group focus-visible:ring-2 focus-visible:ring-cyan-accent rounded-lg outline-none">
         <div class="w-8 h-8 rounded-lg bg-obsidian-750 border border-cyan-accent/30 flex items-center justify-center text-cyan-accent font-mono font-bold text-sm group-hover:border-cyan-accent group-hover:glow-cyan transition-all">
           ⚡
         </div>
-        <span class="font-mono font-bold text-base tracking-tight text-white flex items-center gap-1.5">
+        <span class="font-mono font-bold text-sm sm:text-base tracking-tight text-white flex items-center gap-1.5">
           akashshell <span class="text-[10px] font-normal px-2 py-0.5 rounded-full bg-cyan-accent/10 text-cyan-accent border border-cyan-accent/20">v0.2</span>
         </span>
       </a>
 
-      <div class="hidden md:flex items-center gap-6 text-xs font-mono tracking-wide text-neutral-400">
-        <a href="#features" class="hover:text-cyan-accent transition-colors">ARCHITECTURE</a>
-        <a href="#playground" class="hover:text-cyan-accent transition-colors">SANDBOX</a>
-        <a href="#benchmarks" class="hover:text-cyan-accent transition-colors">BENCHMARKS</a>
-        <a href="#quickstart" class="hover:text-cyan-accent transition-colors">QUICKSTART</a>
-        <a href="#specs" class="hover:text-cyan-accent transition-colors">SPECS</a>
+      <!-- Desktop Links -->
+      <div class="hidden md:flex items-center gap-6 text-xs font-mono tracking-wider text-neutral-400">
+        <a href="#features" class="hover:text-cyan-accent transition-colors focus-visible:text-cyan-accent outline-none">ARCHITECTURE</a>
+        <a href="#visualizer" class="hover:text-cyan-accent transition-colors focus-visible:text-cyan-accent outline-none">PIPE ENGINE</a>
+        <a href="#playground" class="hover:text-cyan-accent transition-colors focus-visible:text-cyan-accent outline-none">SANDBOX</a>
+        <a href="#benchmarks" class="hover:text-cyan-accent transition-colors focus-visible:text-cyan-accent outline-none">BENCHMARKS</a>
+        <a href="#quickstart" class="hover:text-cyan-accent transition-colors focus-visible:text-cyan-accent outline-none">BUILD</a>
       </div>
 
-      <div class="flex items-center gap-3">
+      <!-- Action CTAs -->
+      <div class="flex items-center gap-2 sm:gap-3">
         <a href="https://github.com/AkashPriyadarshii/akashshell" target="_blank" rel="noopener noreferrer" 
-           class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-obsidian-750 hover:bg-obsidian-700 border border-white/10 hover:border-cyan-accent/40 text-white text-xs font-mono transition-all group">
-          <svg class="w-4 h-4 text-neutral-400 group-hover:text-cyan-accent transition-colors" viewBox="0 0 24 24" fill="currentColor">
+           class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-obsidian-750 hover:bg-obsidian-700 border border-white/10 hover:border-cyan-accent/40 text-white text-xs font-mono transition-all group focus-visible:ring-2 focus-visible:ring-cyan-accent outline-none">
+          <svg class="w-3.5 h-3.5 text-neutral-400 group-hover:text-cyan-accent transition-colors" viewBox="0 0 24 24" fill="currentColor">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
           </svg>
-          <span>Star</span>
+          <span class="hidden sm:inline">Star</span>
         </a>
-        <a href="#quickstart" class="hidden sm:inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-cyan-accent hover:bg-cyan-400 text-obsidian-950 text-xs font-mono font-bold tracking-tight shadow-md hover:scale-105 active:scale-95 transition-all">
+        <a href="#quickstart" class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-cyan-accent hover:bg-cyan-300 text-obsidian-950 text-xs font-mono font-bold tracking-tight shadow-md hover:scale-105 active:scale-95 transition-all focus-visible:ring-2 focus-visible:ring-white outline-none">
           <span>Get .exe</span>
           <span>↓</span>
         </a>
+        <!-- Mobile Menu Toggle Button -->
+        <button onclick="toggleMobileNav()" aria-label="Toggle navigation" class="md:hidden p-1.5 rounded-lg bg-obsidian-800 text-neutral-300 border border-white/10">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
+          </svg>
+        </button>
       </div>
     </nav>
+
+    <!-- Mobile Drawer -->
+    <div id="mobile-nav" class="hidden md:hidden fixed top-20 inset-x-4 p-5 rounded-2xl bg-obsidian-900/95 backdrop-blur-2xl border border-white/10 shadow-2xl space-y-3 font-mono text-xs text-neutral-300">
+      <a href="#features" onclick="toggleMobileNav()" class="block py-2 px-3 rounded-lg hover:bg-obsidian-800 hover:text-cyan-accent">ARCHITECTURE</a>
+      <a href="#visualizer" onclick="toggleMobileNav()" class="block py-2 px-3 rounded-lg hover:bg-obsidian-800 hover:text-cyan-accent">PIPE ENGINE</a>
+      <a href="#playground" onclick="toggleMobileNav()" class="block py-2 px-3 rounded-lg hover:bg-obsidian-800 hover:text-cyan-accent">SANDBOX</a>
+      <a href="#benchmarks" onclick="toggleMobileNav()" class="block py-2 px-3 rounded-lg hover:bg-obsidian-800 hover:text-cyan-accent">BENCHMARKS</a>
+      <a href="#quickstart" onclick="toggleMobileNav()" class="block py-2 px-3 rounded-lg hover:bg-obsidian-800 hover:text-cyan-accent">QUICKSTART &amp; SPECS</a>
+    </div>
   </header>
 
-  <main class="relative z-10 pt-28 md:pt-36">
+  <main id="main-content" class="relative z-10 pt-28 md:pt-36">
 
     <!-- HERO SECTION (AIDA: ATTENTION) -->
     <section class="max-w-6xl mx-auto px-4 sm:px-6 pb-20 text-center">
       
       <!-- Telemetry Eyebrow Pill -->
       <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-obsidian-800 border border-white/10 text-[11px] font-mono tracking-widest text-neutral-300 mb-8 animate-pulse-slow">
-        <span class="w-2 h-2 rounded-full bg-cyan-accent animate-ping"></span>
+        <span class="w-2 h-2 rounded-full bg-cyan-accent"></span>
         <span class="text-cyan-accent font-semibold">DIRECT2D HARDWARE ACCELERATION</span>
         <span class="text-neutral-500">|</span>
         <span>100% PURE WIN32 C</span>
@@ -291,26 +334,37 @@
         <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-200 to-cyan-accent">GPU-Accelerated Terminal</span> in Pure C.
       </h1>
 
-      <!-- Value Proposition Subtext -->
+      <!-- Value Proposition Subtext (Tight, max 25 words) -->
       <p class="text-base sm:text-lg text-neutral-400 max-w-2xl mx-auto font-sans leading-relaxed mb-10">
-        Bypass bloated WebViews and sluggish GDI hosts. <span class="text-white font-medium">akashshell</span> executes commands with sub-millisecond latency, 60fps Direct2D rendering, and isolated Warp-style block data architecture.
+        Bypass bloated WebViews and sluggish GDI hosts. <strong class="text-white font-semibold">akashshell</strong> delivers sub-millisecond execution, 60fps Direct2D drawing, and isolated Warp-style block data architecture.
       </p>
 
-      <!-- Action Button Group -->
+      <!-- Action Button Group with Button-in-Button Pattern -->
       <div class="flex flex-wrap items-center justify-center gap-4 mb-14">
-        <a href="#quickstart" class="flex items-center gap-3 px-6 py-3.5 rounded-xl bg-cyan-accent hover:bg-cyan-300 text-obsidian-950 font-mono font-bold text-sm tracking-tight shadow-xl shadow-cyan-accent/20 hover:scale-[1.02] active:scale-[0.98] transition-all">
+        
+        <!-- Primary CTA: Button-in-Button -->
+        <a href="#quickstart" class="group flex items-center gap-3 pl-6 pr-2 py-2 rounded-full bg-cyan-accent hover:bg-cyan-300 text-obsidian-950 font-mono font-bold text-xs tracking-tight shadow-xl shadow-cyan-accent/20 hover:scale-[1.02] active:scale-[0.98] transition-all">
           <span>DOWNLOAD GUI v0.2</span>
-          <span class="w-6 h-6 rounded-lg bg-obsidian-950/15 flex items-center justify-center text-xs">↓</span>
+          <span class="w-8 h-8 rounded-full bg-obsidian-950/15 flex items-center justify-center group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-xs">
+            ↓
+          </span>
         </a>
-        <a href="https://github.com/AkashPriyadarshii/akashshell" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-obsidian-800 hover:bg-obsidian-750 border border-white/10 hover:border-cyan-accent/40 text-white font-mono text-sm tracking-tight transition-all">
+
+        <!-- Secondary CTA -->
+        <a href="https://github.com/AkashPriyadarshii/akashshell" target="_blank" rel="noopener noreferrer" 
+           class="group flex items-center gap-3 pl-6 pr-3 py-2.5 rounded-full bg-obsidian-800 hover:bg-obsidian-750 border border-white/10 hover:border-cyan-accent/40 text-white font-mono text-xs tracking-tight hover:scale-[1.02] active:scale-[0.98] transition-all">
           <span>View Source Code</span>
-          <span class="text-neutral-400">↗</span>
+          <span class="w-6 h-6 rounded-full bg-white/5 flex items-center justify-center text-neutral-400 group-hover:text-cyan-accent group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-[10px]">
+            ↗
+          </span>
         </a>
+
+        <!-- Copy Command Pill -->
         <button onclick="copyCommand('gcc -O2 -Wall -Wextra gui.c -lshell32 -ldwmapi -lcomctl32 -lgdi32 -ld2d1 -ldwrite -lole32 -luuid -mwindows -o akashshell_gui.exe', this)" 
-                class="hidden lg:flex items-center gap-2.5 px-5 py-3.5 rounded-xl bg-obsidian-900 border border-white/10 hover:border-white/20 text-neutral-300 font-mono text-xs transition-all group">
+                class="hidden lg:flex items-center gap-2.5 px-5 py-3 rounded-full bg-obsidian-900 border border-white/10 hover:border-white/20 text-neutral-300 font-mono text-xs transition-all group">
           <span class="text-cyan-accent">$</span>
           <span>gcc -O2 gui.c -ld2d1 -ldwrite ...</span>
-          <span class="ml-2 px-2 py-0.5 rounded bg-obsidian-800 text-[10px] text-neutral-400 group-hover:text-white">Copy</span>
+          <span class="ml-2 px-2 py-0.5 rounded-full bg-obsidian-800 text-[10px] text-neutral-400 group-hover:text-white">Copy</span>
         </button>
       </div>
 
@@ -324,7 +378,7 @@
             <span class="w-3 h-3 rounded-full bg-hazard-amber/80"></span>
             <span class="w-3 h-3 rounded-full bg-hazard-green/80"></span>
             <span class="ml-3 font-semibold text-neutral-300">akashshell_gui.exe</span>
-            <span class="text-[10px] px-1.5 py-0.5 rounded bg-obsidian-800 text-neutral-400 border border-white/5">D2D1 · 60 FPS · CWD: C:\Users\Akash</span>
+            <span class="text-[10px] px-2 py-0.5 rounded bg-obsidian-800 text-neutral-400 border border-white/5">D2D1 · 60 FPS · CWD: C:\Users\Akash</span>
           </div>
           <div class="flex items-center gap-4 text-[11px] text-neutral-500">
             <span>DirectWrite: Cascadia Code</span>
@@ -349,7 +403,7 @@
               <span class="text-neutral-400">Engine:</span> Win32 Direct2D Pipeline (ID2D1HwndRenderTarget)<br>
               <span class="text-neutral-400">Renderer:</span> GPU Subpixel Hardware Acceleration | Cascadia Code 15pt<br>
               <span class="text-neutral-400">Backdrop:</span> Windows 11 DWM Immersive Mica (DWMWA_SYSTEMBACKDROP_TYPE: 38)<br>
-              <span class="text-neutral-400">Memory:</span> 11.4 MB Private Working Set | Zero GC Cycles
+              <span class="text-neutral-400">Memory:</span> 11.4 MB Private Working Set | Zero GC Overhead
             </div>
           </div>
 
@@ -392,7 +446,7 @@
           <div class="p-3">
             <div class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">0</div>
             <div class="text-[11px] text-cyan-accent font-semibold tracking-wider uppercase mt-1">External Deps</div>
-            <div class="text-[10px] text-neutral-500 mt-0.5">Pure Win32 C & Windows.h</div>
+            <div class="text-[10px] text-neutral-500 mt-0.5">Pure Win32 C &amp; Windows.h</div>
           </div>
           <div class="p-3">
             <div class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">139 <span class="text-sm text-cyan-accent">KB</span></div>
@@ -429,7 +483,7 @@
         </p>
       </div>
 
-      <!-- Gapless Bento Grid -->
+      <!-- Gapless Bento Grid with Double-Bezel Spotlight -->
       <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
 
         <!-- Card 1: Direct2D & DirectWrite (Col 8) -->
@@ -443,13 +497,13 @@
                 DirectX / DXGI Pipeline
               </span>
             </div>
-            <h4 class="text-xl sm:text-2xl font-bold text-white mb-3">Direct2D & DirectWrite GPU Rendering</h4>
+            <h4 class="text-xl sm:text-2xl font-bold text-white mb-3">Direct2D &amp; DirectWrite GPU Rendering</h4>
             <p class="text-sm text-neutral-400 leading-relaxed font-sans mb-6">
-              Bypasses sluggish GDI BitBlt calls entirely. Initializes an <code class="text-cyan-accent bg-obsidian-900 px-1.5 py-0.5 rounded">ID2D1HwndRenderTarget</code> bound to DXGI backbuffers for pristine 60fps rendering with subpixel font anti-aliasing via Cascadia Code.
+              Bypasses sluggish GDI BitBlt calls entirely. Initializes an <code class="text-cyan-accent bg-obsidian-900 px-1.5 py-0.5 rounded font-mono">ID2D1HwndRenderTarget</code> bound to DXGI backbuffers for pristine 60fps rendering with subpixel font anti-aliasing via Cascadia Code.
             </p>
           </div>
           <div class="inner-core rounded-xl p-4 font-mono text-xs text-neutral-300 overflow-x-auto border border-white/5">
-            <span class="text-neutral-500">// Direct2D Initialization Snippet</span><br>
+            <span class="text-neutral-500">// Direct2D Initialization</span><br>
             <span class="text-purple-400">D2D1_RENDER_TARGET_PROPERTIES</span> rtp = {<br>
             &nbsp;&nbsp;.type = <span class="text-cyan-accent">D2D1_RENDER_TARGET_TYPE_DEFAULT</span>,<br>
             &nbsp;&nbsp;.pixelFormat = { <span class="text-yellow-300">DXGI_FORMAT_B8G8R8A8_UNORM</span>, <span class="text-yellow-300">D2D1_ALPHA_MODE_PREMULTIPLIED</span> }<br>
@@ -469,7 +523,7 @@
             </div>
             <h4 class="text-xl font-bold text-white mb-3">Warp-Style Block UI</h4>
             <p class="text-sm text-neutral-400 leading-relaxed font-sans mb-4">
-              Every command execution is encapsulated in a discrete <code class="text-yellow-300 bg-obsidian-900 px-1.5 py-0.5 rounded">CommandBlock</code> node. Eliminates chaotic scrolling walls and gives each stdout stream isolated boundaries.
+              Every command execution is encapsulated in a discrete <code class="text-yellow-300 bg-obsidian-900 px-1.5 py-0.5 rounded font-mono">CommandBlock</code> node. Eliminates chaotic scrolling walls and gives each stdout stream isolated boundaries.
             </p>
           </div>
           <div class="inner-core rounded-xl p-3 text-center text-xs font-mono text-neutral-400">
@@ -487,9 +541,9 @@
               </span>
               <span class="text-xs font-mono text-hazard-red font-semibold">Zero Leaks</span>
             </div>
-            <h4 class="text-xl font-bold text-white mb-3">Surgical Pipe Handle Isolation</h4>
+            <h4 class="text-xl font-bold text-white mb-3">Surgical Handle Isolation</h4>
             <p class="text-sm text-neutral-400 leading-relaxed font-sans mb-4">
-              Pipes created with <code class="text-hazard-red bg-obsidian-900 px-1 py-0.5 rounded">bInheritHandle = FALSE</code>. Uses <code class="text-white">DuplicateHandle</code> exclusively for the active stage, closing parent copies immediately to prevent hanging pipes and deadlocks.
+              Pipes created with <code class="text-hazard-red bg-obsidian-900 px-1 py-0.5 rounded font-mono">bInheritHandle = FALSE</code>. Uses <code class="text-white font-mono">DuplicateHandle</code> exclusively for the active stage, closing parent copies immediately to prevent hanging pipes and deadlocks.
             </p>
           </div>
           <div class="text-[11px] font-mono text-neutral-400 p-2.5 rounded-lg bg-obsidian-900 border border-white/5">
@@ -514,7 +568,7 @@
               Child processes stream stdout over asynchronous background worker threads (`_beginthreadex`). Massive logs and continuous output never freeze or stutter the 60fps UI thread.
             </p>
           </div>
-          <div class="grid grid-cols-2 gap-4 text-xs font-mono">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-mono">
             <div class="inner-core p-3 rounded-lg border border-white/5">
               <span class="text-cyan-accent font-bold">UI Thread (Main):</span><br>
               Direct2D Paint loop, input caret, smooth scrolling @ 60fps.
@@ -522,6 +576,64 @@
             <div class="inner-core p-3 rounded-lg border border-white/5">
               <span class="text-yellow-400 font-bold">Worker Thread (Worker):</span><br>
               ReadFile on stdout pipe, chunk aggregation, PostMessage to UI.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- INTERACTIVE PIPE ENGINE VISUALIZER COMPONENT -->
+    <section id="visualizer" class="max-w-6xl mx-auto px-4 sm:px-6 py-20 border-t border-white/10">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <h2 class="text-xs font-mono font-bold tracking-widest text-cyan-accent uppercase mb-3">WIN32 KERNEL MECHANICS</h2>
+        <h3 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Interactive Pipe Engine</h3>
+        <p class="text-neutral-400 mt-3 text-sm font-sans">
+          Click the pipeline stages below to trace how akashshell manages Windows pipe handles without leaking descriptors or freezing child processes.
+        </p>
+      </div>
+
+      <div class="double-bezel rounded-2xl p-6 sm:p-8 max-w-5xl mx-auto">
+        
+        <!-- Controls -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
+          <button onclick="setPipeStep(1)" id="pipe-btn-1" class="px-3 py-2.5 rounded-xl bg-cyan-accent text-obsidian-950 font-mono font-bold text-xs transition-all shadow-md">
+            1. CreatePipe()
+          </button>
+          <button onclick="setPipeStep(2)" id="pipe-btn-2" class="px-3 py-2.5 rounded-xl bg-obsidian-750 text-neutral-300 border border-white/10 font-mono text-xs hover:border-cyan-accent transition-all">
+            2. DuplicateHandle()
+          </button>
+          <button onclick="setPipeStep(3)" id="pipe-btn-3" class="px-3 py-2.5 rounded-xl bg-obsidian-750 text-neutral-300 border border-white/10 font-mono text-xs hover:border-cyan-accent transition-all">
+            3. CreateProcess()
+          </button>
+          <button onclick="setPipeStep(4)" id="pipe-btn-4" class="px-3 py-2.5 rounded-xl bg-obsidian-750 text-neutral-300 border border-white/10 font-mono text-xs hover:border-cyan-accent transition-all">
+            4. Close Parent Copies
+          </button>
+        </div>
+
+        <!-- Pipe Visual Canvas -->
+        <div class="inner-core rounded-xl p-6 font-mono text-xs sm:text-sm text-neutral-300 space-y-4 border border-white/5 crt-scanlines">
+          <div class="flex items-center justify-between pb-3 border-b border-white/5">
+            <span class="text-cyan-accent font-bold" id="pipe-status-title">STEP 1: Create Non-Inheritable Pipes</span>
+            <span class="text-xs px-2 py-0.5 rounded bg-obsidian-850 text-neutral-400" id="pipe-status-code">bInheritHandle = FALSE</span>
+          </div>
+
+          <div class="p-4 rounded-lg bg-obsidian-900 border border-white/5 leading-relaxed" id="pipe-explanation">
+            The shell calls <code class="text-cyan-accent">CreatePipe(&amp;rd, &amp;wr, &amp;sa, 0)</code> where <code class="text-yellow-400">sa.bInheritHandle = FALSE</code>. Neither end of the pipe can be accidentally inherited by arbitrary background child processes spawned by other threads.
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2 text-center text-xs">
+            <div id="pipe-box-1" class="p-3 rounded-lg bg-obsidian-850 border border-cyan-accent/40 text-cyan-accent">
+              <strong>Parent Shell (akashshell)</strong><br>
+              <span class="text-[11px] text-neutral-400">Owns Private Pipe Handles</span>
+            </div>
+            <div id="pipe-box-2" class="p-3 rounded-lg bg-obsidian-850 border border-white/10 text-neutral-400">
+              <strong>Stage 1 (cmd.exe /c a)</strong><br>
+              <span class="text-[11px] text-neutral-500">Awaiting Inherited Stdout</span>
+            </div>
+            <div id="pipe-box-3" class="p-3 rounded-lg bg-obsidian-850 border border-white/10 text-neutral-400">
+              <strong>Stage 2 (cmd.exe /c b)</strong><br>
+              <span class="text-[11px] text-neutral-500">Awaiting Inherited Stdin</span>
             </div>
           </div>
         </div>
@@ -577,7 +689,7 @@
           <input type="text" id="terminal-input" placeholder="Type 'help', 'bench', 'pipes', 'neofetch'..." 
                  class="w-full bg-transparent text-white font-mono text-sm outline-none placeholder-neutral-600"
                  onkeydown="handleTerminalKey(event)">
-          <button onclick="executeTerminalInput()" class="px-4 py-1.5 rounded-lg bg-cyan-accent/20 hover:bg-cyan-accent/30 text-cyan-accent border border-cyan-accent/40 font-mono text-xs transition-all">
+          <button onclick="executeTerminalInput()" class="px-4 py-1.5 rounded-lg bg-cyan-accent/20 hover:bg-cyan-accent/30 text-cyan-accent border border-cyan-accent/40 font-mono text-xs transition-all active:scale-95">
             RUN
           </button>
         </div>
@@ -729,11 +841,11 @@
         </div>
         <div class="flex items-center gap-3">
           <a href="https://github.com/AkashPriyadarshii/akashshell/raw/main/akashshell_gui.exe" 
-             class="px-6 py-3 rounded-xl bg-cyan-accent hover:bg-cyan-300 text-obsidian-950 font-mono font-bold text-xs tracking-tight shadow-lg shadow-cyan-accent/20 hover:scale-105 active:scale-95 transition-all">
+             class="px-6 py-3 rounded-xl bg-cyan-accent hover:bg-cyan-300 text-obsidian-950 font-mono font-bold text-xs tracking-tight shadow-lg shadow-cyan-accent/20 hover:scale-105 active:scale-95 transition-all focus-visible:ring-2 focus-visible:ring-white outline-none">
             Download GUI (139KB)
           </a>
           <a href="https://github.com/AkashPriyadarshii/akashshell/raw/main/akashshell.exe" 
-             class="px-5 py-3 rounded-xl bg-obsidian-750 hover:bg-obsidian-700 border border-white/10 text-white font-mono text-xs transition-all">
+             class="px-5 py-3 rounded-xl bg-obsidian-750 hover:bg-obsidian-700 border border-white/10 text-white font-mono text-xs transition-all focus-visible:ring-2 focus-visible:ring-cyan-accent outline-none">
             Download CLI (96KB)
           </a>
         </div>
@@ -750,27 +862,27 @@
       <div class="space-y-4">
         
         <details class="double-bezel rounded-xl p-5 group [&_summary::-webkit-details-marker]:hidden cursor-pointer">
-          <summary class="flex items-center justify-between font-mono font-bold text-sm text-white">
+          <summary class="flex items-center justify-between font-mono font-bold text-sm text-white focus-visible:text-cyan-accent outline-none">
             <span>Why build a terminal in pure C instead of Rust or Zig?</span>
             <span class="text-cyan-accent group-open:rotate-180 transition-transform">↓</span>
           </summary>
           <div class="mt-4 text-xs text-neutral-400 font-sans leading-relaxed pt-3 border-t border-white/5">
-            Writing directly in pure Win32 C allows complete, zero-abstraction interaction with Windows kernel APIs (<code class="text-cyan-accent">CreateProcess</code>, <code class="text-cyan-accent">CreatePipe</code>, <code class="text-cyan-accent">DuplicateHandle</code>) and Direct2D COM interfaces without wrapper runtimes, foreign function interface (FFI) overhead, or bulky standard libraries.
+            Writing directly in pure Win32 C allows complete, zero-abstraction interaction with Windows kernel APIs (<code class="text-cyan-accent font-mono">CreateProcess</code>, <code class="text-cyan-accent font-mono">CreatePipe</code>, <code class="text-cyan-accent font-mono">DuplicateHandle</code>) and Direct2D COM interfaces without wrapper runtimes, foreign function interface (FFI) overhead, or bulky standard libraries.
           </div>
         </details>
 
         <details class="double-bezel rounded-xl p-5 group [&_summary::-webkit-details-marker]:hidden cursor-pointer">
-          <summary class="flex items-center justify-between font-mono font-bold text-sm text-white">
+          <summary class="flex items-center justify-between font-mono font-bold text-sm text-white focus-visible:text-cyan-accent outline-none">
             <span>How does akashshell prevent pipe deadlocks when chaining commands?</span>
             <span class="text-cyan-accent group-open:rotate-180 transition-transform">↓</span>
           </summary>
           <div class="mt-4 text-xs text-neutral-400 font-sans leading-relaxed pt-3 border-t border-white/5">
-            Standard pipe bugs occur when child processes or the parent retain open write handles, preventing EOF from ever being signaled. akashshell creates all pipes with non-inheritable handles, duplicates only the exact stdin/stdout handle needed for each child, and closes all parent handles immediately before calling <code class="text-cyan-accent">WaitForSingleObject</code>.
+            Standard pipe bugs occur when child processes or the parent retain open write handles, preventing EOF from ever being signaled. akashshell creates all pipes with non-inheritable handles, duplicates only the exact stdin/stdout handle needed for each child, and closes all parent handles immediately before calling <code class="text-cyan-accent font-mono">WaitForSingleObject</code>.
           </div>
         </details>
 
         <details class="double-bezel rounded-xl p-5 group [&_summary::-webkit-details-marker]:hidden cursor-pointer">
-          <summary class="flex items-center justify-between font-mono font-bold text-sm text-white">
+          <summary class="flex items-center justify-between font-mono font-bold text-sm text-white focus-visible:text-cyan-accent outline-none">
             <span>What are the system requirements for akashshell?</span>
             <span class="text-cyan-accent group-open:rotate-180 transition-transform">↓</span>
           </summary>
@@ -807,8 +919,25 @@
     </div>
   </footer>
 
-  <!-- CLIENT SCRIPTS: INTERACTIVE TERMINAL ENGINE -->
+  <!-- CLIENT SCRIPTS -->
   <script>
+    // Spotlight Mouse Tracker for Double-Bezel Cards
+    document.querySelectorAll('.double-bezel').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+      });
+    });
+
+    // Mobile Navigation Drawer Toggle
+    function toggleMobileNav() {
+      const nav = document.getElementById('mobile-nav');
+      nav.classList.toggle('hidden');
+    }
+
     // Copy helper
     function copyCommand(text, btn) {
       navigator.clipboard.writeText(text);
@@ -817,10 +946,68 @@
       setTimeout(() => { btn.innerText = original; }, 2000);
     }
 
-    // Terminal Simulator Logic
+    // Interactive Pipe Step Tracker
+    const pipeSteps = {
+      1: {
+        title: "STEP 1: Create Non-Inheritable Pipes",
+        code: "sa.bInheritHandle = FALSE",
+        text: "The shell calls CreatePipe(&rd, &wr, &sa, 0) with sa.bInheritHandle = FALSE. Neither end can be accidentally inherited by background child processes spawned by other threads.",
+        box1: "bg-obsidian-850 border-cyan-accent/40 text-cyan-accent",
+        box2: "bg-obsidian-850 border-white/10 text-neutral-400",
+        box3: "bg-obsidian-850 border-white/10 text-neutral-400"
+      },
+      2: {
+        title: "STEP 2: Duplicate Target Handles",
+        code: "DuplicateHandle(..., TRUE)",
+        text: "For child stage i, the shell duplicates ONLY the write end of pipe[i] as inheritable, and the read end of pipe[i-1] as inheritable. All other ends remain non-inheritable.",
+        box1: "bg-obsidian-850 border-white/10 text-neutral-400",
+        box2: "bg-obsidian-850 border-cyan-accent/40 text-cyan-accent",
+        box3: "bg-obsidian-850 border-yellow-400/40 text-yellow-400"
+      },
+      3: {
+        title: "STEP 3: Spawn Stage with STARTUPINFO",
+        code: "CreateProcess(..., bInheritHandles=TRUE)",
+        text: "CreateProcess is invoked with STARTUPINFO.std_in and std_out set to the duplicated handles. Child processes inherit exactly the stream descriptors they require.",
+        box1: "bg-obsidian-850 border-white/10 text-neutral-400",
+        box2: "bg-obsidian-850 border-hazard-green/40 text-hazard-green",
+        box3: "bg-obsidian-850 border-hazard-green/40 text-hazard-green"
+      },
+      4: {
+        title: "STEP 4: Close Parent Copies Immediately",
+        code: "CloseHandle(pipe_wr[p]) before wait",
+        text: "Crucial step: the shell immediately closes its own pipe write handles. When stage 1 finishes, EOF is cleanly signaled to stage 2, eliminating hangs and deadlocks.",
+        box1: "bg-obsidian-850 border-hazard-green/40 text-hazard-green",
+        box2: "bg-obsidian-850 border-white/10 text-neutral-500",
+        box3: "bg-obsidian-850 border-white/10 text-neutral-500"
+      }
+    };
+
+    function setPipeStep(step) {
+      for (let i = 1; i <= 4; i++) {
+        const btn = document.getElementById(`pipe-btn-${i}`);
+        if (i === step) {
+          btn.className = "px-3 py-2.5 rounded-xl bg-cyan-accent text-obsidian-950 font-mono font-bold text-xs transition-all shadow-md";
+        } else {
+          btn.className = "px-3 py-2.5 rounded-xl bg-obsidian-750 text-neutral-300 border border-white/10 font-mono text-xs hover:border-cyan-accent transition-all";
+        }
+      }
+
+      const data = pipeSteps[step];
+      document.getElementById('pipe-status-title').innerText = data.title;
+      document.getElementById('pipe-status-code').innerText = data.code;
+      document.getElementById('pipe-explanation').innerHTML = data.text;
+      
+      document.getElementById('pipe-box-1').className = `p-3 rounded-lg border ${data.box1}`;
+      document.getElementById('pipe-box-2').className = `p-3 rounded-lg border ${data.box2}`;
+      document.getElementById('pipe-box-3').className = `p-3 rounded-lg border ${data.box3}`;
+    }
+
+    // Terminal Simulator Logic with History & Auto-Scroll
     const screen = document.getElementById('terminal-screen');
     const input = document.getElementById('terminal-input');
     let cmdCount = 1;
+    const history = [];
+    let historyIdx = -1;
 
     const commands = {
       'help': `Available Commands:
@@ -883,12 +1070,28 @@ Directory of C:\\Users\\Akash\\akashshell
     function handleTerminalKey(e) {
       if (e.key === 'Enter') {
         executeTerminalInput();
+      } else if (e.key === 'ArrowUp') {
+        if (history.length > 0 && historyIdx < history.length - 1) {
+          historyIdx++;
+          input.value = history[history.length - 1 - historyIdx];
+        }
+      } else if (e.key === 'ArrowDown') {
+        if (historyIdx > 0) {
+          historyIdx--;
+          input.value = history[history.length - 1 - historyIdx];
+        } else if (historyIdx === 0) {
+          historyIdx = -1;
+          input.value = '';
+        }
       }
     }
 
     function executeTerminalInput() {
       const val = input.value.trim();
       if (!val) return;
+
+      history.push(val);
+      historyIdx = -1;
 
       if (val.toLowerCase() === 'clear') {
         screen.innerHTML = '';
@@ -901,7 +1104,7 @@ Directory of C:\\Users\\Akash\\akashshell
       const outputText = commands[lower] || `akashshell: '${val}': command executed via Windows CreateProcess (exit code 0)`;
 
       const block = document.createElement('div');
-      block.className = 'rounded-xl bg-obsidian-850/90 border border-white/10 p-4 shadow-md';
+      block.className = 'rounded-xl bg-obsidian-850/90 border border-white/10 p-4 shadow-md transition-all duration-300';
       block.innerHTML = `
         <div class="flex items-center justify-between pb-2 border-b border-white/5 text-[11px] text-neutral-400">
           <span class="text-cyan-accent font-semibold flex items-center gap-1.5">
