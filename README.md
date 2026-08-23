@@ -1,4 +1,4 @@
-﻿# akashshell ⚡
+# akashshell ⚡
 
 **A blazing-fast, minimalist, hardware-accelerated Windows 11 terminal emulator and shell written entirely in pure C.**
 
@@ -6,6 +6,7 @@
 ![Language](https://img.shields.io/badge/Language-C-A8B9CC?style=for-the-badge&logo=c)
 ![Rendering](https://img.shields.io/badge/Rendering-Direct2D_|_DirectWrite-FFB900?style=for-the-badge)
 ![Dependencies](https://img.shields.io/badge/Dependencies-Zero-success?style=for-the-badge)
+[![Live Site](https://img.shields.io/badge/Live_Site-akashshell-00F0FF?style=for-the-badge&logo=googlechrome&logoColor=black)](https://akashpriyadarshii.github.io/akashshell/)
 
 `akashshell` is a ground-up reimagining of what a modern shell frontend can be on Windows. Abandoning bloated web frameworks (Electron) and heavy UI libraries, it uses **pure Win32 C, Direct2D, and DirectWrite** to deliver an elite-grade, zero-dependency terminal experience.
 
