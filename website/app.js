@@ -1,20 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. SCROLL INTERPOLATION (GPU-SAFE)
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.15 // Trigger when 15% of element is visible
-    };
-
-    const revealObserver = new IntersectionObserver((entries, observer) => {
+    const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('is-revealed');
-                observer.unobserve(entry.target); // Only animate once
+                entry.target.classList.add('is-visible');
             }
         });
-    }, observerOptions);
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
 
-    const revealElements = document.querySelectorAll('.scroll-reveal');
-    revealElements.forEach(el => revealObserver.observe(el));
+    document.querySelectorAll('.reveal').forEach((el) => {
+        observer.observe(el);
+    });
 });

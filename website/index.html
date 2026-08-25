@@ -49,194 +49,126 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- NOISE & MESH BACKGROUND -->
-    <div class="noise"></div>
-    <div class="mesh-bg"></div>
-
-    <!-- FLUID ISLAND NAV -->
-    <nav class="nav-wrapper">
-        <div class="nav-island scroll-reveal">
+    <!-- TOP NAVIGATION -->
+    <nav class="navbar">
+        <div class="container nav-content">
             <a href="#" class="nav-brand">AKASHSHELL_</a>
-            <a href="https://github.com/AkashPriyadarshii/akashshell" target="_blank" class="btn-nested" style="padding: 0.25rem 0.25rem 0.25rem 1rem;">
-                Star on GitHub
-                <div class="inner-circle">
-                    <i class="ph-light ph-star"></i>
-                </div>
-            </a>
+            <div class="nav-links">
+                <a href="https://github.com/AkashPriyadarshii/akashshell" target="_blank" class="btn btn-ghost">
+                    GitHub Source
+                </a>
+            </div>
         </div>
     </nav>
 
-    <!-- HERO SECTION -->
-    <header class="hero container section-pad">
-        <span class="eyebrow scroll-reveal delay-100">v0.1 Engine Deployed</span>
-        <h1 class="hero-title scroll-reveal delay-200">
-            ZERO LATENCY.<br>
-            INFINITE SCALE.
-        </h1>
-        <p class="hero-subtitle scroll-reveal delay-300">
-            Stop piping unstructured text. Start passing strongly-typed objects. The elite-grade Windows terminal shell engineered entirely in memory-safe Rust by Akash Priyadarshii.
-        </p>
-        
-        <div class="scroll-reveal delay-300">
-            <a href="#install" class="btn-nested">
-                Install akashshell
-                <div class="inner-circle">
-                    <i class="ph-light ph-arrow-down-right"></i>
-                </div>
-            </a>
-        </div>
+    <main>
+        <!-- HERO SECTION -->
+        <header class="section-pad container hero reveal">
+            <h1 class="hero-title">The agentic terminal for Windows.</h1>
+            <p class="hero-subtitle">
+                Stop piping unstructured text. Start passing strongly-typed objects. Built entirely in memory-safe Rust with zero garbage collection by Akash Priyadarshii.
+            </p>
+            <div class="hero-actions">
+                <a href="#install" class="btn btn-primary">Download v0.1 Engine</a>
+                <a href="#features" class="btn btn-ghost">Read Architecture</a>
+            </div>
 
-        <div class="scroll-reveal delay-300" style="margin-top: 6rem; width: 100%; max-width: 900px;">
-            <div class="double-bezel">
-                <div class="double-bezel-core" style="padding: 0; background: #000;">
-                    <div style="display: flex; align-items: center; padding: 1rem; border-bottom: 1px solid var(--glass-border);">
-                        <div style="display: flex; gap: 0.5rem;">
-                            <span style="width: 10px; height: 10px; border-radius: 50%; background: #333;"></span>
-                            <span style="width: 10px; height: 10px; border-radius: 50%; background: #333;"></span>
-                            <span style="width: 10px; height: 10px; border-radius: 50%; background: #333;"></span>
-                        </div>
-                        <div style="flex: 1; text-align: center; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted);">akashshell.exe — rustc 1.75.0</div>
+            <!-- TERMINAL MOCKUP -->
+            <div class="card terminal-mockup reveal">
+                <div class="terminal-header">
+                    <span></span><span></span><span></span>
+                </div>
+                <div class="terminal-body">
+                    <div style="color: var(--mute);">// Architected by Akash Priyadarshii. rustc 1.75.0</div>
+                    <div class="mt-8 mb-2">
+                        <span class="prompt">❯</span> sys info | get mem_usage
                     </div>
-                    <div style="padding: 2rem; font-family: var(--font-mono); font-size: 0.875rem; color: #fff; text-align: left; line-height: 1.8;">
-                        <span style="color: #666;">// Launching Akash Engine...</span><br>
-                        <span style="color: #22d3ee;">❯</span> sys info | get mem_usage<br>
-                        <span style="color: #a1a1aa;">{ physical: "12MB", virtual: "34MB", gc_pauses: 0 }</span><br><br>
-                        <span style="color: #22d3ee;">❯</span> ls | where size > 1GB | sort-by modified<br>
-                        <span style="color: #a1a1aa;">[Table Data: 3 Rows, 0ms latency]</span><br><br>
-                        <span style="color: #22d3ee;">❯</span> <span style="animation: blink 1s step-end infinite;">_</span>
+                    <div>{ physical: "12MB", virtual: "34MB", gc_pauses: 0 }</div>
+                    <div class="mt-8 mb-2">
+                        <span class="prompt">❯</span> ls | where size > 1GB | sort-by modified
+                    </div>
+                    <div>[Table Data: 3 Rows, 0ms latency]</div>
+                    <div class="mt-8">
+                        <span class="prompt">❯</span> _
                     </div>
                 </div>
             </div>
-        </div>
-    </header>
+        </header>
 
-    <!-- Z-AXIS CASCADE STATS -->
-    <section class="section-pad container">
-        <div class="text-center" style="text-align: center;">
-            <span class="eyebrow scroll-reveal">Raw Performance</span>
-            <h2 class="font-display scroll-reveal" style="font-size: 3rem; margin-bottom: 1rem;">UNCOMPROMISING SPEED.</h2>
-            <p class="scroll-reveal" style="color: var(--text-muted); max-width: 50ch; margin: 0 auto;">No garbage collector. No bloated runtimes. Just bare-metal performance.</p>
-        </div>
-
-        <div class="z-cascade scroll-reveal delay-200">
-            <div class="z-card double-bezel">
-                <div class="double-bezel-core">
-                    <div class="z-val">0ms</div>
-                    <div class="z-label">TUI Blocking</div>
+        <!-- STATS BAND -->
+        <section class="container mb-8 reveal">
+            <div class="stats-row">
+                <div class="stat-box">
+                    <div class="stat-val">0ms</div>
+                    <div class="stat-label">TUI Blocking</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-val">100%</div>
+                    <div class="stat-label">Memory Safe Rust</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-val">0rs</div>
+                    <div class="stat-label">Budget Constraints</div>
                 </div>
             </div>
-            <div class="z-card double-bezel">
-                <div class="double-bezel-core" style="background: rgba(20,20,20,0.9); box-shadow: 0 30px 60px rgba(0,0,0,0.8);">
-                    <div class="z-val" style="color: #fff;">100%</div>
-                    <div class="z-label" style="color: #ccc;">Memory Safe Rust</div>
-                </div>
-            </div>
-            <div class="z-card double-bezel">
-                <div class="double-bezel-core">
-                    <div class="z-val">0rs</div>
-                    <div class="z-label">Budget</div>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- ASYMMETRICAL BENTO GRID -->
-    <section class="section-pad container" id="features">
-        <span class="eyebrow scroll-reveal">The Architecture</span>
-        <h2 class="font-display scroll-reveal" style="font-size: clamp(3rem, 5vw, 4.5rem); margin-bottom: 4rem;">ENGINEERED FOR<br>THE ELITE.</h2>
-        
-        <div class="bento-grid">
-            <div class="bento-col-8 double-bezel scroll-reveal">
-                <div class="double-bezel-core">
-                    <i class="ph-light ph-database" style="font-size: 2.5rem; margin-bottom: 1.5rem; color: #fff;"></i>
-                    <h3 class="bento-title">Structured Data Pipelines</h3>
-                    <p class="bento-desc">Traditional shells pass raw bytes, forcing you to use `awk` and `grep` fragile regex hacks. akashshell passes strongly-typed objects—Records, Lists, and Primitives. Map, filter, and reduce your system data like you would in a modern programming language.</p>
-                </div>
+        <!-- FEATURES GRID -->
+        <section id="features" class="section-pad container reveal">
+            <div class="text-center mb-8">
+                <h2 class="ink" style="font-size: 2rem; margin-bottom: 0.5rem; letter-spacing: -0.02em;">Uncompromising Engineering</h2>
+                <p>Designed under strict hardware utilization constraints.</p>
             </div>
             
-            <div class="bento-col-4 double-bezel scroll-reveal delay-100">
-                <div class="double-bezel-core">
-                    <i class="ph-light ph-lightning" style="font-size: 2.5rem; margin-bottom: 1.5rem; color: #fff;"></i>
-                    <h3 class="bento-title">Decoupled TUI</h3>
-                    <p class="bento-desc">The rendering loop is strictly isolated from the execution thread. Your prompt never freezes, even when running massive computations.</p>
+            <div class="features-grid">
+                <div class="card feature-card">
+                    <div class="feature-icon"><i class="ph ph-database"></i></div>
+                    <h3 class="feature-title">Structured Data Pipelines</h3>
+                    <p>Traditional shells pass raw bytes, forcing fragile regex hacks. akashshell passes strongly-typed objects—Records, Lists, and Primitives. Map, filter, and reduce your system data directly.</p>
                 </div>
-            </div>
-
-            <div class="bento-col-5 double-bezel scroll-reveal">
-                <div class="double-bezel-core">
-                    <i class="ph-light ph-windows-logo" style="font-size: 2.5rem; margin-bottom: 1.5rem; color: #fff;"></i>
-                    <h3 class="bento-title">Native ConPTY</h3>
-                    <p class="bento-desc">Deep Windows Pseudo-Terminal integration allows flawless execution of legacy `.exe` files without tearing.</p>
-                </div>
-            </div>
-
-            <div class="bento-col-7 double-bezel scroll-reveal delay-100">
-                <div class="double-bezel-core">
-                    <i class="ph-light ph-webhooks-logo" style="font-size: 2.5rem; margin-bottom: 1.5rem; color: #fff;"></i>
-                    <h3 class="bento-title">Wasm Plugin Engine</h3>
-                    <p class="bento-desc">Write your own shell commands in any language (Rust, Go, C, Zig), compile them to WebAssembly, and execute them natively with near-zero overhead and absolute security isolation.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- EDITORIAL SPLIT (AKASH MARKETING) -->
-    <section class="section-pad container">
-        <div class="editorial-split">
-            <div class="scroll-reveal">
-                <span class="eyebrow">The Architect</span>
-                <h2 class="editorial-heading">AKASH<br>PRIYADARSHII</h2>
-                <p style="color: var(--text-muted); font-size: 1.25rem; max-width: 40ch; margin-bottom: 2rem;">
-                    A ruthless pursuit of performance. Built from scratch with zero budget and zero garbage collection, challenging the bloated ecosystem of modern Windows tools.
-                </p>
-                <a href="https://github.com/AkashPriyadarshii" target="_blank" class="btn-nested">
-                    View GitHub Profile
-                    <div class="inner-circle">
-                        <i class="ph-light ph-arrow-up-right"></i>
-                    </div>
-                </a>
-            </div>
-            <div class="scroll-reveal delay-200">
-                <div class="double-bezel" style="aspect-ratio: 4/5;">
-                    <div class="double-bezel-core" style="background: url('https://picsum.photos/seed/akash/800/1000') center/cover; position: relative;">
-                        <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,10,10,0.9), transparent);"></div>
-                        <div style="position: absolute; bottom: 2.5rem; left: 2.5rem;">
-                            <div style="font-family: var(--font-mono); font-size: 0.875rem; color: #fff; letter-spacing: 0.1em;">// SYSTEMS ENGINEER</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA -->
-    <section id="install" class="section-pad container text-center" style="text-align: center; border-top: 1px solid var(--glass-border);">
-        <div class="double-bezel scroll-reveal" style="max-width: 800px; margin: 0 auto;">
-            <div class="double-bezel-core" style="padding: 4rem 2rem;">
-                <h2 class="font-display" style="font-size: 3rem; margin-bottom: 1rem;">CLONE THE POWER.</h2>
-                <p style="color: var(--text-muted); margin-bottom: 3rem;">Compile the raw Rust source natively on your machine.</p>
                 
-                <div style="background: rgba(0,0,0,0.5); border: 1px solid var(--glass-border); border-radius: 1rem; padding: 1.5rem; font-family: var(--font-mono); color: #fff; text-align: left; max-width: 500px; margin: 0 auto 2rem; overflow-x: auto;">
+                <div class="card feature-card">
+                    <div class="feature-icon"><i class="ph ph-lightning"></i></div>
+                    <h3 class="feature-title">Decoupled TUI Loop</h3>
+                    <p>The rendering loop is strictly isolated from the execution thread. Your prompt never freezes, blocks, or stutters—even when executing maximum load operations.</p>
+                </div>
+
+                <div class="card feature-card">
+                    <div class="feature-icon"><i class="ph ph-windows-logo"></i></div>
+                    <h3 class="feature-title">Native ConPTY Bridge</h3>
+                    <p>Deep Windows Pseudo-Terminal integration allows flawless execution of legacy `.exe` files without tearing or UI artifacting.</p>
+                </div>
+
+                <div class="card feature-card">
+                    <div class="feature-icon"><i class="ph ph-webhooks-logo"></i></div>
+                    <h3 class="feature-title">Wasm Engine</h3>
+                    <p>Write your own shell commands in any language, compile them to WebAssembly, and execute them natively with near-zero overhead and absolute security isolation.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA SECTION -->
+        <section id="install" class="section-pad container reveal" style="text-align: center;">
+            <h2 class="ink" style="font-size: 2.5rem; letter-spacing: -0.04em; margin-bottom: 1rem;">Clone the repository.</h2>
+            <p style="margin-bottom: 2rem;">Compile the raw Rust source natively on your machine.</p>
+            
+            <div class="card terminal-mockup" style="max-width: 600px; margin: 0 auto 2rem;">
+                <div class="terminal-body text-center" style="padding: 2rem;">
                     git clone https://github.com/AkashPriyadarshii/akashshell.git<br>
                     cd akashshell<br>
                     cargo run --release
                 </div>
-
-                <a href="https://github.com/AkashPriyadarshii/akashshell" target="_blank" class="btn-nested">
-                    Access Source Code
-                    <div class="inner-circle">
-                        <i class="ph-light ph-github-logo"></i>
-                    </div>
-                </a>
             </div>
-        </div>
-    </section>
 
-    <!-- FOOTER -->
+            <a href="https://github.com/AkashPriyadarshii/akashshell" target="_blank" class="btn btn-primary">
+                View Source on GitHub
+            </a>
+        </section>
+    </main>
+
     <footer class="footer">
         <div class="container">
-            <p style="font-weight: 600; margin-bottom: 0.5rem; color: #fff;">Architected by Akash Priyadarshii</p>
-            <p style="font-size: 0.875rem;">$150k Agency Grade. Ethereal Glass Architecture.</p>
+            Architected by Akash Priyadarshii. Zero Slop. Zero GC.
         </div>
     </footer>
 
