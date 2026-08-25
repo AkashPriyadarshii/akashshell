@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <!-- Primary Meta Tags -->
+    <title>akashshell | Built by Akash Priyadarshii</title>
+    <meta name="title" content="akashshell | Architected by Akash Priyadarshii">
+    <meta name="description" content="akashshell is an elite, zero-latency Windows 11 terminal shell. Built entirely in Safe Rust by Akash Priyadarshii. Stop piping text. Start passing structured objects.">
+    <meta name="keywords" content="akashshell, Akash Priyadarshii, Rust shell, Windows terminal emulator, zero latency shell, Windows 11 terminal, CLI, developer tools, nushell alternative, powershell alternative, Rust programming">
+    <meta name="author" content="Akash Priyadarshii">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://akashpriyadarshii.github.io/akashshell/">
+    <meta property="og:title" content="akashshell | Elite Rust Shell by Akash Priyadarshii">
+    <meta property="og:description" content="A zero-latency, heavily optimized terminal emulator built in Rust by Akash Priyadarshii. Replaces PowerShell.">
+    <meta property="og:image" content="https://picsum.photos/seed/akashshell/1200/630">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://akashpriyadarshii.github.io/akashshell/">
+    <meta property="twitter:title" content="akashshell | Architected by Akash Priyadarshii">
+    <meta property="twitter:description" content="Stop piping text. Start passing objects. Built from scratch in Rust by Akash Priyadarshii.">
+    <meta property="twitter:image" content="https://picsum.photos/seed/akashshell/1200/630">
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "akashshell",
+      "operatingSystem": "Windows 10, Windows 11",
+      "applicationCategory": "DeveloperApplication",
+      "author": {
+        "@type": "Person",
+        "name": "Akash Priyadarshii"
+      },
+      "description": "An elite-grade, zero-latency terminal emulator and shell built entirely in Rust by Akash Priyadarshii."
+    }
+    </script>
+
+    <!-- Preconnect & Fonts -->
+    <link rel="preconnect" href="https://api.fontshare.com">
+    <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@800,900,700,500,400&f[]=satoshi@900,700,500,400&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="noise"></div>
+    
+    <nav class="navbar">
+        <div class="logo">AKASHSHELL_</div>
+        <div class="nav-links">
+            <a href="https://github.com/AkashPriyadarshii/akashshell" target="_blank" class="nav-btn">
+                <i class="ph ph-github-logo"></i>
+                GitHub
+            </a>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- HERO SECTION -->
+        <section class="hero asymmetric-split">
+            <div class="hero-content">
+                <div class="badge fade-up" style="animation-delay: 0ms;">v0.1 BETA AVAILABLE</div>
+                <h1 class="hero-title fade-up" style="animation-delay: 100ms;">
+                    STOP PIPING TEXT.<br>
+                    <span class="text-accent">START PASSING OBJECTS.</span>
+                </h1>
+                <p class="hero-subtitle fade-up" style="animation-delay: 200ms;">
+                    The elite-grade, zero-latency Windows terminal shell. Architected for speed. Built entirely in memory-safe Rust.
+                </p>
+                <div class="hero-actions fade-up" style="animation-delay: 300ms;">
+                    <a href="#install" class="btn btn-primary magnetic-btn">Install Now <i class="ph ph-arrow-right"></i></a>
+                    <a href="#features" class="btn btn-secondary magnetic-btn">View Architecture</a>
+                </div>
+            </div>
+            
+            <div class="hero-visual fade-in" style="animation-delay: 400ms;">
+                <div class="terminal-window liquid-glass" id="hero-terminal">
+                    <div class="terminal-header">
+                        <div class="dots"><span></span><span></span><span></span></div>
+                        <div class="terminal-title">akashshell.exe — Powered by Rust</div>
+                    </div>
+                    <div class="terminal-body">
+                        <div class="prompt"><span class="prompt-arrow">❯</span> ls | where size > 1MB | sort-by modified</div>
+                        <div class="output-table">
+                            <div class="table-row head"><span>Name</span><span>Type</span><span>Size</span></div>
+                            <div class="table-row"><span>target</span><span>Dir</span><span>4.2GB</span></div>
+                            <div class="table-row"><span>akashshell.exe</span><span>File</span><span>1.1MB</span></div>
+                        </div>
+                        <div class="prompt"><span class="prompt-arrow">❯</span> <span class="typing-text">_</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- KINETIC MARQUEE -->
+        <section class="marquee-container">
+            <div class="marquee">
+                <span>ARCHITECTED BY AKASH PRIYADARSHII // ZERO LATENCY ENGINE // ENGINEERED IN RUST // ZERO GC // NATIVE CONPTY BRIDGE // </span>
+                <span>ARCHITECTED BY AKASH PRIYADARSHII // ZERO LATENCY ENGINE // ENGINEERED IN RUST // ZERO GC // NATIVE CONPTY BRIDGE // </span>
+            </div>
+        </section>
+
+        <!-- FEATURES BENTO GRID -->
+        <section id="features" class="features-section">
+            <h2 class="section-title fade-up">THE ARSENAL</h2>
+            
+            <div class="bento-grid">
+                <!-- Card 1 -->
+                <div class="bento-card bento-wide liquid-glass bento-anim">
+                    <div class="card-icon"><i class="ph ph-lightning"></i></div>
+                    <h3>Absolute Zero Latency</h3>
+                    <p>Built completely in Safe Rust with a decoupled TUI rendering loop. The prompt never stutters, blocks, or freezes—even under maximum compilation load.</p>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="bento-card liquid-glass bento-anim" style="transition-delay: 100ms;">
+                    <div class="card-icon"><i class="ph ph-database"></i></div>
+                    <h3>Structured Pipelines</h3>
+                    <p>Say goodbye to regex mapping. Pass strongly-typed data (Records, Lists, Booleans) between operations instantly.</p>
+                </div>
+                
+                <!-- Card 3 -->
+                <div class="bento-card liquid-glass bento-anim" style="transition-delay: 200ms;">
+                    <div class="card-icon"><i class="ph ph-windows-logo"></i></div>
+                    <h3>Native ConPTY</h3>
+                    <p>Deep integration with Windows Pseudo-Terminal API. Run legacy EXEs seamlessly without UI artifacts or layout tearing.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CREATOR SECTION (MAX AKASH MARKETING) -->
+        <section class="creator-section asymmetric-split">
+            <div class="creator-visual liquid-glass bento-anim">
+                <div class="creator-badge"><i class="ph ph-cpu"></i> SYSTEMS ENGINEER</div>
+                <div class="name-glitch" data-text="AKASH PRIYADARSHII">AKASH PRIYADARSHII</div>
+            </div>
+            
+            <div class="creator-content bento-anim" style="transition-delay: 200ms;">
+                <h2 class="section-title text-left">UNCOMPROMISING<br>ENGINEERING.</h2>
+                <p>
+                    <strong>akashshell</strong> is the brainchild of systems developer <strong>Akash Priyadarshii</strong>. Conceived to bypass the heavy, bloated garbage-collection of modern terminals, this project was architected under strict constraints: memory safety, zero external dependencies, and maximum hardware utilization.
+                </p>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-value font-mono">0ms</div>
+                        <div class="stat-label">UI Blocking</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value font-mono">0rs</div>
+                        <div class="stat-label">Budget</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value font-mono">100%</div>
+                        <div class="stat-label">Rust / Safe Code</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- INSTALL CTA -->
+        <section id="install" class="cta-section liquid-glass bento-anim">
+            <h2>Ready to switch?</h2>
+            <p>Clone the repository and compile the raw power of akashshell directly.</p>
+            
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                    <span class="code-title">powershell</span>
+                </div>
+                <pre><code>git clone https://github.com/AkashPriyadarshii/akashshell.git
+cd akashshell
+cargo run --release</code></pre>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>Designed and Developed by <strong>Akash Priyadarshii</strong> &copy; 2026</p>
+            <p class="footer-sub">Vercel-Core Meets Dribbble-Clean. Zero Slop.</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
