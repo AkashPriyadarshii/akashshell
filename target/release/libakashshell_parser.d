@@ -1,0 +1,1 @@
+C:\Users\saves\Desktop\akashshell\target\release\libakashshell_parser.rlib: C:\Users\saves\Desktop\akashshell\crates\akashshell-parser\src\ast.rs C:\Users\saves\Desktop\akashshell\crates\akashshell-parser\src\lexer.rs C:\Users\saves\Desktop\akashshell\crates\akashshell-parser\src\lib.rs C:\Users\saves\Desktop\akashshell\crates\akashshell-parser\src\parser.rs

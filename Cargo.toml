@@ -1,0 +1,22 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/akashshell-core",
+    "crates/akashshell-parser",
+    "crates/akashshell-tui",
+    "crates/akashshell-pty",
+    "crates/akashshell-cli"
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+authors = ["Akash"]
+description = "Elite-grade, zero-latency terminal shell"
+license = "MIT"
+
+[workspace.dependencies]
+akashshell-core = { path = "crates/akashshell-core" }
+akashshell-parser = { path = "crates/akashshell-parser" }
+akashshell-tui = { path = "crates/akashshell-tui" }
+akashshell-pty = { path = "crates/akashshell-pty" }

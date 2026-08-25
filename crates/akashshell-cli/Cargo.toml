@@ -1,0 +1,10 @@
+[package]
+name = "akashshell-cli"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+akashshell-core = { path = "../akashshell-core" }
+akashshell-parser = { path = "../akashshell-parser" }
+akashshell-tui = { path = "../akashshell-tui" }
+akashshell-pty = { path = "../akashshell-pty" }
