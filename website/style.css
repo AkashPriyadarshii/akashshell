@@ -97,41 +97,6 @@ h1, h2, h3, .logo {
     transform: translateY(-1px);
 }
 
-/* BUTTONS (MAGNETIC CAPABLE) */
-.btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    padding: 1rem 2rem;
-    font-weight: 700;
-    font-size: 1rem;
-    border-radius: 99px;
-    text-decoration: none;
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    cursor: pointer;
-}
-
-.btn-primary {
-    background-color: var(--text-primary);
-    color: var(--bg-base);
-}
-
-.btn-primary:hover {
-    background-color: var(--accent);
-    transform: scale(1.02);
-}
-
-.btn-secondary {
-    background-color: transparent;
-    color: var(--text-primary);
-    border: 1px solid var(--glass-border);
-}
-
-.btn-secondary:hover {
-    background-color: var(--glass-bg);
-}
-
 /* HERO ASYMMETRIC SPLIT */
 .asymmetric-split {
     display: grid;
@@ -139,13 +104,14 @@ h1, h2, h3, .logo {
     gap: 4rem;
     min-height: 100dvh;
     align-items: center;
-    padding-top: 15vh;
-    padding-bottom: 5vh;
+    padding-top: 6rem; /* Max pt-24 cap strictly enforced */
+    padding-bottom: 4rem;
 }
 
 @media (min-width: 1024px) {
     .asymmetric-split {
         grid-template-columns: 1.2fr 1fr;
+        padding-top: 8rem;
     }
 }
 
@@ -163,15 +129,16 @@ h1, h2, h3, .logo {
 
 .hero-title {
     font-size: clamp(3rem, 7vw, 6.5rem);
-    line-height: 0.9;
+    line-height: 1; /* Descender clearance */
     letter-spacing: -0.04em;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
+    max-width: 15ch; /* Force maximum 2 lines */
 }
 
 .hero-subtitle {
     font-size: 1.25rem;
     color: var(--text-muted);
-    max-width: 45ch;
+    max-width: 45ch; /* Keeps line length readable */
     margin-bottom: 3rem;
 }
 
@@ -179,6 +146,44 @@ h1, h2, h3, .logo {
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
+    align-items: center;
+}
+
+/* BUTTONS (MAGNETIC CAPABLE) */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    font-weight: 700;
+    font-size: 1rem;
+    border-radius: 99px;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+    white-space: nowrap; /* CRITICAL: Banned CTA Wrap */
+}
+
+.btn-primary {
+    background-color: var(--text-primary);
+    color: var(--bg-base); /* Extreme contrast */
+}
+
+.btn-primary:hover {
+    background-color: var(--accent);
+    transform: scale(0.98); /* Tactile physical push */
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--glass-border);
+}
+
+.btn-secondary:hover {
+    background-color: var(--glass-bg);
+    transform: scale(0.98);
 }
 
 /* LIQUID GLASS */
