@@ -282,3 +282,21 @@ h1, h2, h3, .ink {
     opacity: 1;
     transform: translateY(0);
 }
+
+/* FOOTER SOCIALS */
+.social-links {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+.social-link {
+    color: var(--mute);
+    font-size: 1.5rem;
+    transition: color 0.2s var(--ease-standard), transform 0.2s var(--ease-standard);
+}
+.social-link:hover {
+    color: var(--ink);
+    transform: translateY(-2px);
+}
+
