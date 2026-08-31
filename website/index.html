@@ -3,30 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="theme-color" content="#2b2622">
+    <meta name="theme-color" content="#060709">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://akashpriyadarshii.github.io/akashshell/">
     
     <!-- Primary Meta Tags -->
-    <title>akashshell | Built by Akash Priyadarshii</title>
-    <meta name="title" content="akashshell | Architected by Akash Priyadarshii">
-    <meta name="description" content="akashshell is an elite, zero-latency Windows 11 terminal shell. Built entirely in memory-safe Rust by Akash Priyadarshii. Stop piping unstructured text. Start passing strongly-typed objects.">
-    <meta name="keywords" content="akashshell, Akash Priyadarshii, Akash__ydv001, open-source builder, self-taught developer, Rust shell, Windows terminal emulator, zero latency shell, Windows 11 terminal, CLI, developer tools, systems programming">
+    <title>akashshell | Zero-Latency Windows 11 Structured Terminal</title>
+    <meta name="title" content="akashshell | Zero-Latency Windows 11 Structured Terminal">
+    <meta name="description" content="akashshell is an elite, zero-latency Windows 11 terminal shell built in memory-safe Rust. Replaces unstructured text piping with strongly typed Value pipelines.">
+    <meta name="keywords" content="akashshell, Akash Priyadarshii, Rust shell, Windows terminal emulator, zero latency shell, Windows 11 terminal, CLI, developer tools, systems programming">
     <meta name="author" content="Akash Priyadarshii">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Akash Priyadarshii">
     <meta property="og:url" content="https://akashpriyadarshii.github.io/akashshell/">
-    <meta property="og:title" content="akashshell | Elite Rust Shell by Akash Priyadarshii">
-    <meta property="og:description" content="A zero-latency, heavily optimized terminal emulator built in Rust by Akash Priyadarshii. Replaces PowerShell.">
+    <meta property="og:title" content="akashshell | Zero-Latency Rust Terminal">
+    <meta property="og:description" content="Stop piping text. Start passing typed objects. Built in memory-safe Rust with ConPTY integration.">
     <meta property="og:image" content="https://github.com/AkashPriyadarshii.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://akashpriyadarshii.github.io/akashshell/">
-    <meta property="twitter:title" content="akashshell | Architected by Akash Priyadarshii">
-    <meta property="twitter:description" content="Stop piping text. Start passing objects. Built from scratch in Rust by Akash Priyadarshii.">
+    <meta property="twitter:title" content="akashshell | Zero-Latency Rust Terminal">
+    <meta property="twitter:description" content="Stop piping text. Start passing typed objects. Built in memory-safe Rust with ConPTY integration.">
     <meta property="twitter:image" content="https://github.com/AkashPriyadarshii.png">
     <meta name="twitter:creator" content="@Akash__ydv001">
 
@@ -53,19 +53,22 @@
     }
     </script>
 
-    <!-- Preconnect & Icons (Removed heavy font links for performance) -->
+    <!-- Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
-    
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- TOP NAVIGATION -->
+    <!-- STICKY MACHINED NAVBAR -->
     <nav class="navbar">
         <div class="container nav-content">
-            <a href="#" class="nav-brand">AKASHSHELL_</a>
-            <div class="nav-links">
+            <a href="#" class="nav-brand">
+                <span class="prompt-sig">λ</span> akashshell_
+            </a>
+            <div class="nav-telemetry">
+                <span class="telemetry-tag">CONPTY READY</span>
+                <span class="telemetry-tag">LATENCY &lt;0.2MS</span>
                 <a href="https://github.com/AkashPriyadarshii/akashshell" target="_blank" class="btn btn-ghost">
-                    GitHub Source
+                    <i class="ph ph-github-logo"></i> GitHub
                 </a>
             </div>
         </div>
@@ -74,123 +77,231 @@
     <main>
         <!-- HERO SECTION -->
         <header class="section-pad container hero reveal">
-            <h1 class="hero-title">The agentic terminal for Windows.</h1>
+            <div class="mono-eyebrow">SYSTEMS-GRADE WINDOWS TERMINAL</div>
+            <h1 class="hero-title">Pass typed objects. <span>Not raw bytes.</span></h1>
             <p class="hero-subtitle">
-                Stop piping unstructured text. Start passing strongly-typed objects. Built entirely in memory-safe Rust with zero garbage collection by Akash Priyadarshii.
+                akashshell replaces unstructured text pipes with strongly typed <code class="font-mono" style="color: var(--accent);">Value</code> pipelines in memory-safe Rust. Zero GC pauses, zero TUI prompt blocking, and native Windows ConPTY bridge.
             </p>
             <div class="hero-actions">
-                <a href="https://github.com/AkashPriyadarshii/akashshell/releases/latest" target="_blank" class="btn btn-primary">Download v0.1 Engine</a>
-                <a href="#features" class="btn btn-ghost">Read Architecture</a>
+                <a href="https://github.com/AkashPriyadarshii/akashshell/releases/latest" target="_blank" class="btn btn-primary">
+                    <i class="ph-bold ph-download-simple"></i> Download v0.1 Engine
+                </a>
+                <a href="#features" class="btn btn-ghost">
+                    <i class="ph-bold ph-cpu"></i> Read Architecture
+                </a>
+                <a href="https://github.com/AkashPriyadarshii/akashshell" target="_blank" class="btn btn-ghost">
+                    <i class="ph-bold ph-code"></i> Source Code
+                </a>
             </div>
 
-            <!-- TERMINAL MOCKUP -->
-            <div class="card terminal-mockup reveal">
+            <!-- INTERACTIVE SPLIT TERMINAL MOCKUP -->
+            <div class="card terminal-split reveal">
                 <div class="terminal-header">
-                    <span></span><span></span><span></span>
+                    <div class="terminal-dots">
+                        <span></span><span></span><span></span>
+                    </div>
+                    <div class="terminal-title">akashshell // live pipeline engine</div>
+                    <div class="terminal-dots" style="opacity: 0;">
+                        <span></span><span></span><span></span>
+                    </div>
                 </div>
-                <div class="terminal-body">
-                    <div style="color: var(--mute);">// Architected by Akash Priyadarshii. rustc 1.75.0</div>
-                    <div class="mt-8 mb-2">
-                        <span class="prompt">❯</span> sys info | get mem_usage
+                
+                <div class="terminal-tabs">
+                    <button class="tab-btn active" data-tab="processes">sys.processes | sort cpu</button>
+                    <button class="tab-btn" data-tab="filesystem">fs.scan ./crates | take 3</button>
+                    <button class="tab-btn" data-tab="json">http.get /metrics | filter ok</button>
+                </div>
+
+                <div class="terminal-grid">
+                    <!-- LEFT PANE: AST & EXECUTION -->
+                    <div class="terminal-pane">
+                        <div class="pane-label">
+                            <span>01 · Pipeline Stream</span>
+                            <span style="color: var(--accent);">AST PARSED</span>
+                        </div>
+                        <div class="cmd-line">
+                            <span class="cmd-prompt">λ</span> <span id="cli-cmd" style="color: var(--accent);">sys.processes</span> <span id="cli-args" class="cmd-arg">| sort-by cpu desc</span> <span id="cli-flags" class="cmd-flag">| take 3</span><span class="cmd-suggest"> --json</span>
+                        </div>
+                        <div class="mt-4" style="color: var(--mute); font-size: 0.75rem;">
+                            [Evaluator] Stage 1: Syscall (Native Windows NtQuerySystemInformation)<br>
+                            [Evaluator] Stage 2: In-Memory QuickSort (CPU desc)<br>
+                            [Evaluator] Stage 3: Zero-Copy Slice [0..3]
+                        </div>
                     </div>
-                    <div>{ physical: "12MB", virtual: "34MB", gc_pauses: 0 }</div>
-                    <div class="mt-8 mb-2">
-                        <span class="prompt">❯</span> ls | where size > 1GB | sort-by modified
+
+                    <!-- RIGHT PANE: STRUCTURED VALUE TABLE -->
+                    <div class="terminal-pane">
+                        <div class="pane-label">
+                            <span>02 · Structured Output</span>
+                            <span>Value::Table (3 records)</span>
+                        </div>
+                        <div id="table-container">
+                            <table class="table-output">
+                                <thead>
+                                    <tr>
+                                        <th>PID</th>
+                                        <th>NAME</th>
+                                        <th style="text-align: right;">CPU %</th>
+                                        <th style="text-align: right;">MEM</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>4102</td>
+                                        <td style="color: var(--ink);">rustc.exe</td>
+                                        <td class="col-num" style="color: var(--accent);">34.2%</td>
+                                        <td class="col-num">840 MB</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1894</td>
+                                        <td style="color: var(--ink);">cargo.exe</td>
+                                        <td class="col-num" style="color: var(--accent);">18.7%</td>
+                                        <td class="col-num">120 MB</td>
+                                    </tr>
+                                    <tr>
+                                        <td>8420</td>
+                                        <td style="color: var(--ink);">akashshell.exe</td>
+                                        <td class="col-num" style="color: var(--accent);">0.1%</td>
+                                        <td class="col-num">12 MB</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                    <div>[Table Data: 3 Rows, 0ms latency]</div>
-                    <div class="mt-8">
-                        <span class="prompt">❯</span> _
-                    </div>
+                </div>
+
+                <div class="terminal-footer">
+                    <span>STATUS: <strong class="badge-ok">0 (EXIT_SUCCESS)</strong></span>
+                    <span>EXECUTION TIME: <strong>0.14ms</strong></span>
+                    <span>MEMORY: <strong>12.4 MB</strong></span>
+                </div>
+            </div>
+
+            <!-- STATS BAND -->
+            <div class="stats-row reveal" style="width: 100%; max-width: 960px;">
+                <div class="stat-box">
+                    <div class="stat-val accent">&lt;0.2ms</div>
+                    <div class="stat-label">Evaluator Latency</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-val">0ms</div>
+                    <div class="stat-label">TUI Render Blocking</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-val accent">100%</div>
+                    <div class="stat-label">Memory Safe Rust (Zero GC)</div>
                 </div>
             </div>
         </header>
 
-        <!-- STATS BAND -->
-        <section class="container mb-8 reveal">
-            <div class="stats-row">
-                <div class="stat-box">
-                    <div class="stat-val">0ms</div>
-                    <div class="stat-label">TUI Blocking</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-val">100%</div>
-                    <div class="stat-label">Memory Safe Rust</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-val">0rs</div>
-                    <div class="stat-label">Budget Constraints</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- FEATURES GRID -->
+        <!-- BENTO FEATURES GRID -->
         <section id="features" class="section-pad container reveal">
             <div class="text-center mb-8">
-                <h2 class="ink" style="font-size: 2rem; margin-bottom: 0.5rem; letter-spacing: -0.02em;">Uncompromising Engineering</h2>
-                <p>Designed under strict hardware utilization constraints.</p>
+                <div class="mono-eyebrow">ENGINEERING ARCHITECTURE</div>
+                <h2 class="ink" style="font-size: 2.25rem; margin-top: 0.5rem; letter-spacing: -0.03em;">Machined Systems Design</h2>
+                <p style="color: var(--mute); margin-top: 0.25rem;">Built for developer velocity under strict single-thread resource limits.</p>
             </div>
             
             <div class="features-grid">
                 <div class="card feature-card">
-                    <div class="feature-icon"><i class="ph ph-database"></i></div>
-                    <h3 class="feature-title">Structured Data Pipelines</h3>
-                    <p>Traditional shells pass raw bytes, forcing fragile regex hacks. akashshell passes strongly-typed objects—Records, Lists, and Primitives. Map, filter, and reduce your system data directly.</p>
+                    <div>
+                        <div class="feature-header">
+                            <div class="feature-icon"><i class="ph-bold ph-tree-structure"></i></div>
+                            <h3 class="feature-title">Structured Pipeline Engine</h3>
+                        </div>
+                        <p class="feature-desc">Stop parsing text with brittle regex and awk cuts. akashshell passes strongly-typed <code class="font-mono" style="color: var(--accent);">Value</code> enums (Records, Lists, Maps, Numbers) across stages with zero runtime serialization penalty.</p>
+                    </div>
+                    <div class="feature-code">
+                        <span style="color: var(--accent);">sys.fs</span> | where size &gt; 50mb | sort-by modified | take 5
+                    </div>
                 </div>
                 
                 <div class="card feature-card">
-                    <div class="feature-icon"><i class="ph ph-lightning"></i></div>
-                    <h3 class="feature-title">Decoupled TUI Loop</h3>
-                    <p>The rendering loop is strictly isolated from the execution thread. Your prompt never freezes, blocks, or stutters—even when executing maximum load operations.</p>
+                    <div>
+                        <div class="feature-header">
+                            <div class="feature-icon"><i class="ph-bold ph-lightning"></i></div>
+                            <h3 class="feature-title">Decoupled TUI Thread</h3>
+                        </div>
+                        <p class="feature-desc">The rendering loop operates on an independent 60 FPS thread isolated from command execution. Your prompt, cursor, and Fish-style suggestions never freeze even when running compute-heavy workloads.</p>
+                    </div>
+                    <div class="feature-code">
+                        <span style="color: var(--accent);">// Render loop isolated via Arc&lt;Mutex&lt;RenderState&gt;&gt;</span>
+                    </div>
                 </div>
 
                 <div class="card feature-card">
-                    <div class="feature-icon"><i class="ph ph-windows-logo"></i></div>
-                    <h3 class="feature-title">Native ConPTY Bridge</h3>
-                    <p>Deep Windows Pseudo-Terminal integration allows flawless execution of legacy `.exe` files without tearing or UI artifacting.</p>
+                    <div>
+                        <div class="feature-header">
+                            <div class="feature-icon"><i class="ph-bold ph-windows-logo"></i></div>
+                            <h3 class="feature-title">Native ConPTY Integration</h3>
+                        </div>
+                        <p class="feature-desc">Deep integration with the Windows Pseudo Console (ConPTY) API ensures 100% transparent execution of legacy Win32 binaries, interactive tools (vim, fzf, git), and command consoles without screen tearing.</p>
+                    </div>
+                    <div class="feature-code">
+                        <span style="color: var(--accent);">CreatePseudoConsole</span>(size, hInput, hOutput, 0, &amp;hPC);
+                    </div>
                 </div>
 
                 <div class="card feature-card">
-                    <div class="feature-icon"><i class="ph ph-webhooks-logo"></i></div>
-                    <h3 class="feature-title">Wasm Engine</h3>
-                    <p>Write your own shell commands in any language, compile them to WebAssembly, and execute them natively with near-zero overhead and absolute security isolation.</p>
+                    <div>
+                        <div class="feature-header">
+                            <div class="feature-icon"><i class="ph-bold ph-cpu"></i></div>
+                            <h3 class="feature-title">Zero GC Overhead</h3>
+                        </div>
+                        <p class="feature-desc">Engineered in pure Rust with strict RAII resource lifetimes. Consumes under 15MB of RAM at steady state with zero garbage collection spikes or background collector pauses.</p>
+                    </div>
+                    <div class="feature-code">
+                        <span style="color: var(--accent);">Memory Footprint:</span> 12.4 MB RSS | GC Pauses: 0ms
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- CTA SECTION -->
-        <section id="install" class="section-pad container reveal" style="text-align: center;">
-            <h2 class="ink" style="font-size: 2.5rem; letter-spacing: -0.04em; margin-bottom: 1rem;">Clone the repository.</h2>
-            <p style="margin-bottom: 2rem;">Compile the raw Rust source natively on your machine.</p>
+        <!-- INSTALL SECTION -->
+        <section id="install" class="section-pad container reveal text-center">
+            <div class="mono-eyebrow">GET STARTED</div>
+            <h2 class="ink" style="font-size: 2.25rem; letter-spacing: -0.03em; margin-top: 0.5rem; margin-bottom: 1rem;">Build from source in seconds.</h2>
+            <p style="margin-bottom: 2rem; color: var(--mute);">Compile the native Rust workspace directly on Windows 10/11.</p>
             
-            <div class="card terminal-mockup" style="max-width: 600px; margin: 0 auto 2rem;">
-                <div class="terminal-body text-center" style="padding: 2rem;">
-                    git clone https://github.com/AkashPriyadarshii/akashshell.git<br>
-                    cd akashshell<br>
-                    cargo run --release
+            <div class="install-box">
+                <div class="install-header">
+                    <span>POWERSHELL / CMD</span>
+                    <span>CARGO BUILD</span>
+                </div>
+                <div class="install-body">
+                    <code id="install-cmd" class="font-mono">git clone https://github.com/AkashPriyadarshii/akashshell.git &amp;&amp; cd akashshell &amp;&amp; cargo run --release</code>
+                    <button id="copy-btn" class="copy-btn" onclick="copyInstallCmd()">
+                        <i class="ph ph-copy"></i> Copy
+                    </button>
                 </div>
             </div>
 
-            <div style="display: flex; gap: 1rem; justify-content: center;">
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
                 <a href="https://github.com/AkashPriyadarshii/akashshell/releases/latest" target="_blank" class="btn btn-primary">
-                    Download Latest Release
+                    <i class="ph-bold ph-download-simple"></i> Download Binary
                 </a>
                 <a href="https://github.com/AkashPriyadarshii/akashshell" target="_blank" class="btn btn-ghost">
-                    View Source on GitHub
+                    <i class="ph ph-github-logo"></i> View GitHub Repository
                 </a>
             </div>
         </section>
     </main>
 
+    <!-- FOOTER -->
     <footer class="footer">
         <div class="container">
             <div class="social-links">
                 <a href="https://github.com/AkashPriyadarshii" target="_blank" class="social-link" title="GitHub"><i class="ph-fill ph-github-logo"></i></a>
                 <a href="https://x.com/Akash__ydv001" target="_blank" class="social-link" title="X (Twitter)"><i class="ph-fill ph-twitter-logo"></i></a>
                 <a href="https://linkedin.com/in/akash-priyadarshi-1aa51b37a" target="_blank" class="social-link" title="LinkedIn"><i class="ph-fill ph-linkedin-logo"></i></a>
+                <a href="https://www.threads.com/@free_dev2026" target="_blank" class="social-link" title="Threads"><i class="ph-fill ph-threads-logo"></i></a>
+                <a href="https://www.instagram.com/akash.priyadarshii/" target="_blank" class="social-link" title="Instagram"><i class="ph-fill ph-instagram-logo"></i></a>
                 <a href="https://reddit.com/user/DragonfruitWeak2801" target="_blank" class="social-link" title="Reddit"><i class="ph-fill ph-reddit-logo"></i></a>
                 <a href="https://akashpriyadarshi.vercel.app" target="_blank" class="social-link" title="Personal Site"><i class="ph-fill ph-globe"></i></a>
             </div>
-            Architected by Akash Priyadarshii. Zero Slop. Zero GC.
+            <div class="footer-sig">
+                Architected by Akash Priyadarshii. Zero Slop. Zero GC. Memory-Safe Rust.
+            </div>
         </div>
     </footer>
 

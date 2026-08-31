@@ -12,14 +12,14 @@
 -->
 
 <div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=2b2622&height=200&section=header&text=AKASHSHELL_&fontSize=80&fontColor=f7f5f0&animation=fadeIn&fontAlignY=35" alt="akashshell header" />
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=060709&height=200&section=header&text=AKASHSHELL_&fontSize=80&fontColor=d4ff00&animation=fadeIn&fontAlignY=35" alt="akashshell header" />
 
   <p><b>The Elite-Grade, Zero-Latency Terminal Shell for Windows 10 & 11</b></p>
   <p><i>Architected and engineered entirely by <b>Akash Priyadarshii</b></i></p>
   
   [![Made with Rust](https://img.shields.io/badge/Made%20with-Rust-orange.svg?style=for-the-badge&logo=rust)](https://www.rust-lang.org/)
   [![Platform: Windows](https://img.shields.io/badge/Platform-Windows%2010%20%7C%2011-blue.svg?style=for-the-badge&logo=windows)](https://microsoft.com)
-  [![Architecture: Structured Pipelines](https://img.shields.io/badge/Architecture-Structured%20Data-success.svg?style=for-the-badge)](#)
+  [![Architecture: Structured Pipelines](https://img.shields.io/badge/Architecture-Structured%20Data-d4ff00.svg?style=for-the-badge)](#)
   [![Wasm Engine: Supported](https://img.shields.io/badge/Plugins-WebAssembly-yellow.svg?style=for-the-badge&logo=webassembly)](#)
   [![Creator: Akash Priyadarshii](https://img.shields.io/badge/Creator-Akash%20Priyadarshii-8A2BE2.svg?style=for-the-badge)](#)
   [![License: MIT](https://img.shields.io/badge/License-MIT-lightgrey.svg?style=for-the-badge)](LICENSE)
