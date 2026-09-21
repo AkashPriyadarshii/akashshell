@@ -31,6 +31,8 @@
   [Website](https://akashpriyadarshii.github.io/akashshell/) | [Architecture](#the-architecture) | [Installation](#getting-started-v01) | [Philosophy](#the-akash-philosophy)
 </div>
 
+[![stars](https://img.shields.io/github/stars/AkashPriyadarshii/akashshell?style=flat-square&label=stars)](https://github.com/AkashPriyadarshii/akashshell/stargazers) [![release](https://img.shields.io/github/v/release/AkashPriyadarshii/akashshell?style=flat-square&label=release)](https://github.com/AkashPriyadarshii/akashshell/releases)
+
 ---
 
 ## ⚡ WHAT IS AKASHSHELL?
