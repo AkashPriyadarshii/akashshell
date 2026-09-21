@@ -145,6 +145,13 @@ We welcome issues and pull requests from elite systems developers, provided they
 
 ---
 
+
+
+<p align="center">
+  <img src="https://api.star-history.com/svg?repos=AkashPriyadarshii/akashshell&type=Date" width="600" alt="star history" />
+</p>
+
+
 ## 📜 THE AKASH PHILOSOPHY
 
 > *"Software has become bloated, lazy, and fundamentally disrespectful of the user's hardware. A terminal emulator is the gateway to the machine—it should not require half a gigabyte of RAM and a garbage collector just to prompt a cursor. `akashshell` is a return to fundamental engineering principles: extreme performance, structured data, and zero slop."*
