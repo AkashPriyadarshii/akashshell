@@ -1,6 +1,5 @@
 <!-- 
 
-**Support:** fuel the next build — [![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/AkashPriyadarshi)
   =============================================================================
   SEO METADATA & KEYWORD INDEX (FOR CRAWLERS AND GITHUB DISCOVERABILITY)
   =============================================================================
@@ -13,6 +12,7 @@
   =============================================================================
 -->
 
+**Support:** fuel the next build — [![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/AkashPriyadarshi)
 <div align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=060709&height=200&section=header&text=AKASHSHELL_&fontSize=80&fontColor=d4ff00&animation=fadeIn&fontAlignY=35" alt="akashshell header" />
 
