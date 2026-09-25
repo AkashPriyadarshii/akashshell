@@ -1,4 +1,6 @@
 <!-- 
+
+**Support:** fuel the next build — [![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/AkashPriyadarshi)
   =============================================================================
   SEO METADATA & KEYWORD INDEX (FOR CRAWLERS AND GITHUB DISCOVERABILITY)
   =============================================================================
@@ -30,7 +32,7 @@
   
   [Website](https://akashpriyadarshii.github.io/akashshell/) | [Architecture](#the-architecture) | [Installation](#getting-started-v01) | [Philosophy](#the-akash-philosophy)
 
-*Fuel the next build:* [![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/AkashPriyadarshi)
+*Fuel the next build:* 
 
 </div>
 
@@ -148,12 +150,9 @@ We welcome issues and pull requests from elite systems developers, provided they
 
 ---
 
-
-
 <p align="center">
   <img src="https://api.star-history.com/svg?repos=AkashPriyadarshii/akashshell&type=Date" width="600" alt="star history" />
 </p>
-
 
 ## 📜 THE AKASH PHILOSOPHY
 
