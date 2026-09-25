@@ -29,6 +29,9 @@
   </p>
   
   [Website](https://akashpriyadarshii.github.io/akashshell/) | [Architecture](#the-architecture) | [Installation](#getting-started-v01) | [Philosophy](#the-akash-philosophy)
+
+*Fuel the next build:* [![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/AkashPriyadarshi)
+
 </div>
 
 [![stars](https://img.shields.io/github/stars/AkashPriyadarshii/akashshell?style=flat-square&label=stars)](https://github.com/AkashPriyadarshii/akashshell/stargazers) [![release](https://img.shields.io/github/v/release/AkashPriyadarshii/akashshell?style=flat-square&label=release)](https://github.com/AkashPriyadarshii/akashshell/releases)
